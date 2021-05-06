@@ -1,2 +1,2 @@
 # Mobile-WebProgramming
-Mobile&amp;Web Team Project
+Mobile&amp;Web Programming Team Project
