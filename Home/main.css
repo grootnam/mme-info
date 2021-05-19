@@ -1,4 +1,5 @@
 body{
+    padding-top: 100px;
     margin: 0 0 0 0;
 }
 div{
@@ -20,7 +21,7 @@ li{
     background: white;
 }
 #header_title:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
-#header_menu:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
+
 #page_About:hover{
     background-color: #ACDEE7;
 }
