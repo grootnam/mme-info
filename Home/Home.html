@@ -5,70 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="main.css" type="text/css" rel="stylesheet">
-    <title>Main</title>
+    <title>Home</title>
+    <link href="../css/header_menu.css" type="text/css" rel="stylesheet">
     
 </head>
-<body id="body" rows="100%">
-    <div id="header" style="width: 100%; height: 10%; overflow: hidden; position: fixed; top: 0px; display: block;">
-        <div id="header_title" style="width: 25%; overflow: hidden; position: relative; display: inline-block;">
-            <h1>
-                MMEINFO
-            </h1>
-        </div>
-        <div id="header_img" style="width: 50%; height: 100%; overflow: hidden; position: absolute; top: 0px; display: inline-block" >
-            <img src="rainbow.png">
-        </div>
-        <div id="header_menu" style="width: 25%; height: 100%; overflow: hidden; position: fixed; display: inline-block">
+<body>
+    <header id="" style="width: 100%; height: 10%; overflow: hidden; position: fixed; top: 0px; display: block;">
+        <div id="header_title" style="width: 27%; height: 100%; overflow: hidden; position: relative; display: inline-block; padding-left: 3%;">
+            <img src="../Resources/header_Menu_Image/pageTitle.png" style="width: 30%; display: inline-block; vertical-align: middle;">
+        </div><div id="header_img" style="width: 40%; height: 100%; overflow: hidden; position: relative; top: 0px; display: inline-block" >
+            <img src="../Resources/header_Menu_Image/rainbow.png" width="100%">
+        </div><div id="header_menu" style="width: 30%; height: 100%; overflow: hidden; position: relative; display: inline-block;">
             <button id="showRightMenuOpen" alt="menu" onclick="activeNav()" style="position: fixed; top: 3% ;right: 3%; ;border-style: none; background-color: white;">
-                <img src="open_menulist.png" id="Menuimg" width="50px">
+                <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menuimg" height="70px">
             </button>
             <script type="text/javascript">
                 function activeNav(){ 
                     var m_index = document.getElementById("menu");
-                    var m_body = document.getElementById("body");
+                    var m_body = document.getElementsByTagName("body");
                     if(m_index.style.display =='none'){
                         m_index.style.display = 'block';
-                        m_body.style.backgroundColor = "#E8E8E8";
-                        m_body.style.opacity= "1"
+                        m_body[0].style.backgroundColor = "#E8E8E8";
+                        m_body[0].style.opacity= "1"
                     }else{
                         m_index.style.display = 'none';
-                        m_body.style.backgroundColor = "#FFFFFF";
-                        m_body.style.opacity= "1"
+                        m_body[0].style.backgroundColor = "#FFFFFF";
+                        m_body[0].style.opacity= "1"
                     }
                 }
             </script>
         </div>
-    </div>
+    </header>
     
-    <nav id="menu" style="display: none; position: absolute; float: right; right: 0px; top: 0px;">
-        <div>
+    <nav id="menu" style="display: none; position: absolute; float: right; right: 0px;">
+        <div style="width:100%; height: 10%;">
             <button id="showRightMenuClose" alt="menu" onclick="activeNav()" style="position: fixed; top: 3% ;right: 3%; border-style: none; background-color: white;">
-                <img src="close_menulist.png" width="50px">
+                <img src="../Resources/header_Menu_Image/close_menulist.png" width="70px">
             </button>
         </div>
         
-        <ul class="menu-list">
+        <ul class="menu-list" style="display: block;">
             <li id="page_About">
-                <a href="">ABOUT</a>
+                <a href=""><h2>ABOUT</h2></a>
             </li>
             <li id="page_Project">
-                <a href="">PROJECT</a>
+                <a href=""><h2>PROJECT</h2></a>
             </li>
             <li id="page_QA">
-                <a href="">Q&A</a>
+                <a href=""><h2>Q&A</h2></a>
             </li>
         </ul>
     </nav>
-    <script type="text/javascript">
-        function activeNav(){ 
-            var m_index = document.getElementById("menu");
-            if(m_index.style.display =='none'){
-                m_index.style.display = 'block';
-            }else{
-                m_index.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>
