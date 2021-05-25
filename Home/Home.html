@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="../css/header_menu.css" type="text/css" rel="stylesheet">
+    
+</head>
+<body>
+    <div data-role="page" id="Home" style="width: 100%; height: 100%;">
+    <div data-role="header" id="" style="width: 100%; height: 10%; overflow: hidden; position: fixed; top: 0px; display: block;">
+        <div id="header_title" style="width: 27%; height: 100%; overflow: hidden; position: relative; display: inline-block; padding-left: 3%;">
+            <img src="../Resources/header_Menu_Image/pageTitle.png" style="width: 30%; display: inline-block; vertical-align: middle;">
+        </div><div id="header_img" style="width: 40%; height: 100%; overflow: hidden; position: relative; top: 0px; display: inline-block" >
+            <img src="../Resources/header_Menu_Image/rainbow.png" width="100%">
+        </div><div id="header_menu" style="width: 30%; height: 100%; overflow: hidden; position: relative; display: inline-block;">
+            <button id="showRightMenuOpen" alt="menu" onclick="activeNav()" style="position: fixed; top: 3% ;right: 3%; ;border-style: none; background-color: white;">
+                <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menuimg" height="70px">
+            </button>
+            <script type="text/javascript">
+                function activeNav(){ 
+                    var m_index = document.getElementById("menu");
+                    var m_body = document.getElementsByTagName("body");
+                    if(m_index.style.display =='none'){
+                        m_index.style.display = 'block';
+                        m_body[0].style.backgroundColor = "#E8E8E8";
+                        m_body[0].style.opacity= "1"
+                    }else{
+                        m_index.style.display = 'none';
+                        m_body[0].style.backgroundColor = "#FFFFFF";
+                        m_body[0].style.opacity= "1"
+                    }
+                }
+            </script>
+        </div>
+    </div>
+    
+    <div data-role="navbar" id="menu" style="display: none; position: absolute; float: right; right: 0px; z-index: 100;">
+        <div style="width:100%; height: 10%;">
+            <button id="showRightMenuClose" alt="menu" onclick="activeNav()" style="position: fixed; top: 3% ;right: 3%; border-style: none; background-color: white;">
+                <img src="../Resources/header_Menu_Image/close_menulist.png" width="70px">
+            </button>
+        </div>
+        
+        <ul class="menu-list" style="display: block;">
+            <li id="page_About">
+                <a href=""><h2>ABOUT</h2></a>
+            </li>
+            <li id="page_Project">
+                <a href=""><h2>PROJECT</h2></a>
+            </li>
+            <li id="page_QA">
+                <a href=""><h2>Q&A</h2></a>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="main" class="ui-content" style="padding-top: 10%; text-align: center; color:#7F7F7F ;">
+
+        <div style="padding-top: 10%;">
+            <p><h1>MultiMedia Of Dongguk Univ.</h1></p>
+        </div>
+
+        <div style="padding-top: 1%;">
+        <p><h5>MMESEUM은 동국대학교 멀티미디어공학과 학생들을 위한 웹사이트입니다. 학과 소개, 구성원, 학생들의 프로젝트 결과물을 관람할 수 있으며</h5></p> 
+        <p><h5> 또한, Q&A 게시판을 통해 다른 학생들과 정보교환이 가능합니다.</h5></p>
+        </div>
+
+        <div class="img-viewport" style="width: 100%; height: 15%; overflow: hidden; position: relative; height: 10%;">
+            <ul class="img_slider" style="width: 2500%; height: 200px; overflow: hidden; position: relative; padding-left: 0;">
+                <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/1.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/2.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/3.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/4.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/5.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/6.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/7.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative;display: block;">
+                    <img src="../Resources/Home/8.jpg" height="200px" >
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/9.jpg" height="200px">
+                 </li>
+                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
+                    <img src="../Resources/Home/10.jpg" height="200px">
+                 </li>
+            </ul>
+            <style>
+                .img_slider{
+                animation: slide_img 15s infinite linear alternate;
+            }
+    
+            @keyframes slide_img{
+                from{
+                    transform: translateX(0px);
+                }
+                to{
+                    transform: translateX(-800px);
+                }
+            }
+            </style>
+        </div>
+
+    </div>
+
+    <div data-role="footer" style="position: fixed; bottom:0px;width: 100%;text-align: end; background-color: #F2F2F2 ;  color:#7F7F7F ;">
+        <p><h5>서울특별시 중구 필동로 1길 30, 신공학관 4층</h5>
+        <h5>동국대학교 멀티미디어공학과</h5>
+        <h5>E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760</h5></p>
+    </div>
+</div>
+</body>
+</html>
