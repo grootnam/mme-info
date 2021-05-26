@@ -12,11 +12,9 @@
 </head>
 <body>
     <div data-role="page" id="Home" style="width: 100%; height: 100%;">
-    <div data-role="header" id="" style="width: 100%; height: 10%; overflow: hidden; position: fixed; top: 0px; display: block;">
+    <div data-role="header" id="" style="width: 100%; height: 10%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white;">
         <div id="header_title" style="width: 27%; height: 100%; overflow: hidden; position: relative; display: inline-block; padding-left: 3%;">
             <img src="../Resources/header_Menu_Image/pageTitle.png" style="width: 30%; display: inline-block; vertical-align: middle;">
-        </div><div id="header_img" style="width: 40%; height: 100%; overflow: hidden; position: relative; top: 0px; display: inline-block" >
-            <img src="../Resources/header_Menu_Image/rainbow.png" width="100%">
         </div><div id="header_menu" style="width: 30%; height: 100%; overflow: hidden; position: relative; display: inline-block;">
             <button id="showRightMenuOpen" alt="menu" onclick="activeNav()" style="position: fixed; top: 3% ;right: 3%; ;border-style: none; background-color: white;">
                 <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menuimg" height="70px">
@@ -39,14 +37,14 @@
         </div>
     </div>
     
-    <div data-role="navbar" id="menu" style="display: none; position: absolute; float: right; right: 0px; z-index: 100;">
+    <div data-role="navbar" id="menu" style=" width: 40%;height: 100%; background: white ; display: none; position: fixed; float: right; right: 0px; z-index: 100; list-style: none;">
         <div style="width:100%; height: 10%;">
             <button id="showRightMenuClose" alt="menu" onclick="activeNav()" style="position: fixed; top: 3% ;right: 3%; border-style: none; background-color: white;">
                 <img src="../Resources/header_Menu_Image/close_menulist.png" width="70px">
             </button>
         </div>
         
-        <ul class="menu-list" style="display: block;">
+        <ul class="menu-list" style="display: block; position: fixed; top: 13%; text-decoration: none;">
             <li id="page_About">
                 <a href=""><h2>ABOUT</h2></a>
             </li>
@@ -59,50 +57,47 @@
         </ul>
     </div>
 
-    <div data-role="main" class="ui-content" style="padding-top: 10%; text-align: center; color:#7F7F7F ;">
 
-        <div style="padding-top: 10%;">
-            <p><h1>MultiMedia Of Dongguk Univ.</h1></p>
+    <div data-role="main" class="main-up" style="padding-top: 8%; text-align: center; color: #7F7F7F;">
+
+        <div class="hometitle">
+            <h1 style="font-size: 6em; font-weight: normal;"><nobr style="color: black;">MME</nobr><nobr style="color: #A6A6A6;">SEUM</nobr></h1>
         </div>
 
-        <div style="padding-top: 1%;">
-        <p><h5>MMESEUM은 동국대학교 멀티미디어공학과 학생들을 위한 웹사이트입니다. 학과 소개, 구성원, 학생들의 프로젝트 결과물을 관람할 수 있으며</h5></p> 
-        <p><h5> 또한, Q&A 게시판을 통해 다른 학생들과 정보교환이 가능합니다.</h5></p>
-        </div>
-
-        <div class="img-viewport" style="width: 100%; height: 15%; overflow: hidden; position: relative; height: 10%;">
-            <ul class="img_slider" style="width: 2500%; height: 200px; overflow: hidden; position: relative; padding-left: 0;">
+        <div class="img-viewport" style="width: 100%; height: 20%; padding-top: 5%; overflow: hidden; position: relative; z-index: -1;">
+            <ul class="img_slider" style="width: 2500%; height: 20em; overflow: hidden; position: relative; padding-left: 0;">
                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/1.jpg" height="200px">
+                    <img src="../Resources/Home/1.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/2.jpg" height="200px">
+                    <img src="../Resources/Home/2.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/3.jpg" height="200px">
+                    <img src="../Resources/Home/3.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/4.jpg" height="200px">
+                    <img src="../Resources/Home/4.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/5.jpg" height="200px">
+                    <img src="../Resources/Home/1.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/6.jpg" height="200px">
+                    <img src="../Resources/Home/2.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/7.jpg" height="200px">
+                    <img src="../Resources/Home/3.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative;display: block;">
-                    <img src="../Resources/Home/8.jpg" height="200px" >
+                    <img src="../Resources/Home/4.jpg" height="300em" >
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/9.jpg" height="200px">
+                    <img src="../Resources/Home/2.jpg" height="300em">
                  </li>
                  <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/10.jpg" height="200px">
+                    <img src="../Resources/Home/3.jpg" height="300em">
                  </li>
             </ul>
+
             <style>
                 .img_slider{
                 animation: slide_img 15s infinite linear alternate;
@@ -113,15 +108,75 @@
                     transform: translateX(0px);
                 }
                 to{
-                    transform: translateX(-800px);
+                    transform: translateX(-60rem);
                 }
             }
+            
             </style>
         </div>
+        <div class="hometitle" style="padding-top: 3%; font-size: 1.5em; font-weight: normal;">
+            <p><h1 >MultiMedia Of Dongguk Univ.</h1></p>
+        </div>
+        <div style="padding-top: 1%;">
+            <p>MMESEUM은 동국대학교 멀티미디어공학과 학생들을 위한 웹입니다. </p> 
+            <p> 멀티미디어공학과의 공지사항과 학사일정을 확인 할 수 있습니다.</p>
+            <p> 그리고 Q&A를 통해 학생들이 서로 소통할 수 있습니다.</p>
+        </div>      
+    </div>
+    
 
+
+    <div class="main-down" style="font-size: large;">
+
+        <div style="padding-top: 6%; padding-right: 5%; padding-left: 5%;">
+            <hr>
+        </div>
+
+        <div style="color: #7F7F7F; padding-right: 5%; padding-left: 5%;">
+            <div style="padding-top: 5%;padding-bottom: 5%;">
+            <p style="font-size: 2.5em; font-weight: bold; color: black;">민족<nobr style="color: #C55A11;">동국</nobr>, 절대<nobr style="color: #C55A11;">멀티</nobr>!</p>
+            <p><h2>애플리케이션을 관리하는 멀티미디어공학과 학생회입니다.</h2></p>
+            <p><h2>이 밤 그날의 반딧불을 당신의 창 가까이 보낼게요.</h2></p>
+            <p><h2>음 사랑한다는 말이에요. 나 우리의 첫 입맞춤을 떠올려</h2></p>
+            <p><h2>그럼 언제든 눈을 감고 음 가장 먼 곳으로 가요</h2></p>
+            </div>
+        </div>
+
+        <div style="color: #7F7F7F; background-color: #F2F2F2; text-align: right;">
+            <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
+            <p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;">우리 <nobr style="color: #C55A11;">멀티미디어공학과</nobr> 학생들이</p>
+            <p style="font-size: 2.5em; font-weight: bold; margin-top: 0.2em; color: black;">만들어 나가는 애플리케이션 입니다.</p>
+            <p><h2>애플리케이션을 관리하는 멀티미디어공학과 학생회입니다.</h2></p>
+            <p><h2>이 밤 그날의 반딧불을 당신의 창 가까이 보낼게요.</h2></p>
+            <p><h2>음 사랑한다는 말이에요. 나 우리의 첫 입맞춤을 떠올려</h2></p>
+            <p><h2>그럼 언제든 눈을 감고 음 가장 먼 곳으로 가요</h2></p>
+            </div>
+        </div>
+        
+        <div style="color: #7F7F7F;">
+            <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
+                <div class="intro-left" style="width: 50%;display: inline-block;">
+                    <p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;"> 저희는 항상 열려 있습니다.</p>
+                    <p><h2>회장</h2></p>
+                    <p><h2>이영주</h2></p>
+                    <p><h2>dudwn97@naver.com</h2></p>
+                    <br>
+                    <p><h2>부회장</h2></p>
+                    <p><h2>류골딱</h2></p>
+                    <p><h2>gudwn_newclear@gmail.com</h2></p>
+                </div>
+                <div class="intro-right" style="width: 49%; text-align: right;display: inline-block;">
+                    <img src="../Resources/Home/ryu.jpg" style="height: 25em;">
+                </div>
+
+            </div>
+        </div>
     </div>
 
-    <div data-role="footer" style="position: fixed; bottom:0px;width: 100%;text-align: end; background-color: #F2F2F2 ;  color:#7F7F7F ;">
+
+
+
+    <div data-role="footer" style="bottom:0px;width: 100%; height: 10%;text-align: end; background-color: #F2F2F2 ;  color:#7F7F7F ;">
         <p><h5>서울특별시 중구 필동로 1길 30, 신공학관 4층</h5>
         <h5>동국대학교 멀티미디어공학과</h5>
         <h5>E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760</h5></p>
