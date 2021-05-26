@@ -1,5 +1,4 @@
 body{
-    padding-top: 100px;
     margin: 0 0 0 0;
 }
 div{
@@ -9,17 +8,6 @@ nav a{
     color: black;
 }
 
-a {
-    text-decoration: none;
-}
-li{
-    list-style: none;
-}
-#menu{
-    width: 40%;
-    height: 100%;
-    background: white;
-}
 #header_title:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
 
 #page_About:hover{
@@ -30,4 +18,10 @@ li{
 }
 #page_QA:hover{
     background-color: #C3D9C2;
+}
+
+@media (max-width: 1100px) {
+    .hometitle{
+        padding-top: 40%;
+    }
 }
