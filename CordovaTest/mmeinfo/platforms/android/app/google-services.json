@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "85638521682",
+    "project_id": "mme-info",
+    "storage_bucket": "mme-info.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85638521682:android:02376dcf22168d8565908b",
+        "android_client_info": {
+          "package_name": "com.dgumme.mmeinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85638521682-d7stcbau784huq7hr24ffhc7j4e95qmh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtIrCP7bX4EJq93FAnZ3ooUd7t5VWCBcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85638521682-d7stcbau784huq7hr24ffhc7j4e95qmh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
