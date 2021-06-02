@@ -5,6 +5,7 @@
         <title>Q&A</title>
         <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
         <link rel="stylesheet" href="Q&A.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="jquery-3.6.0.js"></script>
         <script src="Q&A.js"></script>
     </head>
@@ -23,61 +24,105 @@
           <div class="container">
             <div class="bar gray">
                 <button class="bar-item button tablink fontB font_size gray_clicked" onclick="openMenu(event,'All')">전체</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Class')">수업</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Career')">진로</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Etc')">기타</button>
-
+                <button class="bar-item button tablink fontB" onclick= "openMenu(event,'Class'); sort('content_class')">수업</button>
+                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Career'); sort('content_career');">진로</button>
+                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Etc'); sort('content_etc');">기타</button>
             </div>
-                      
+            <!--------------------------------------All--------------------------------------->                   
             <div id="All" class="menu">
-              <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력"> 
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+                <button class="write">+글쓰기</button>
+              </div>
 
               <div id = "content_container">
                 <span class ="content_etc">
-                  <div class ="content_head">기</div>
+                  <div class ="content_head fontB">Q</div>
                   <a class="content_tail" href="#">컴공이랑 우리과랑 다른점</a>
                 </span>
 
                 <span class="content_career">  
-                  <div class="content_head">진</div>
+                  <div class="content_head fontB">Q</div>
                   <a class="content_tail" href="#">네이버로 취업한 선배 있나요?</a>
                 </span>
 
                 <span class="content_etc">  
-                  <div class="content_head">기</div>
+                  <div class="content_head fontB">Q</div>
                   <a class="content_tail" href="#">간식행사 때 뭐 줘요?</a>
                 </span>
 
                 <span class="content_class">  
-                  <div class="content_head">수업</div>
+                  <div class="content_head fontB">Q</div>
                   <a class="content_tail" href="#">소공 과제 질문있습니다!</a>
                 </span>
 
                 <span class="content_class">  
-                  <div class="content_head">수업</div>
+                  <div class="content_head fontB">Q</div>
+                  <a class="content_tail" href="#">멀티미디어객체지향 수업 보강 언제하나요?</a>
+                </span>
+
+                <span class ="content_etc">
+                  <div class ="content_head fontB">Q</div>
+                  <a class="content_tail" href="#">컴공이랑 우리과랑 다른점</a>
+                </span>
+
+                <span class="content_career">  
+                  <div class="content_head fontB">Q</div>
+                  <a class="content_tail" href="#">네이버로 취업한 선배 있나요?</a>
+                </span>
+
+                <span class="content_etc">  
+                  <div class="content_head fontB">Q</div>
+                  <a class="content_tail" href="#">간식행사 때 뭐 줘요?</a>
+                </span>
+
+                <span class="content_class">  
+                  <div class="content_head fontB">Q</div>
+                  <a class="content_tail" href="#">소공 과제 질문있습니다!</a>
+                </span>
+
+                <span class="content_class">  
+                  <div class="content_head fontB">Q</div>
                   <a class="content_tail" href="#">멀티미디어객체지향 수업 보강 언제하나요?</a>
                 </span>
               </div>
             </div>
 
+            <!--------------------------------------Class--------------------------------------->       
             <div id="Class" class="container menu" style="display:none">
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
             </div>
 
+            <!--------------------------------------Career--------------------------------------->       
             <div id="Career" class="container menu" style="display:none">
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
             </div>
 
+            <!--------------------------------------Etc--------------------------------------->       
             <div id="Etc" class="container menu" style="display:none">
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
             </div>
 
           </div> 
         </div>
 
         <!----------------------------------------Footer--------------------------------------------->
-        <div data-role="footer" style="bottom:0px;width: 100%; height: 10%;text-align: end; background-color: #F2F2F2 ;  color:#7F7F7F ;">
-          <p><h5>서울특별시 중구 필동로 1길 30, 신공학관 4층</h5>
-          <h5>동국대학교 멀티미디어공학과</h5>
-          <h5>E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760</h5></p>
-      </div>
+        <div data-role="footer">
+          <p class="bottom">서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
+            동국대학교 멀티미디어공학과<br>
+            E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
+          </p>
+        </div>
 
       </div>
     </body>

@@ -1,7 +1,7 @@
-@font-face{font-family: 'fontB';src: url('NanumSquareB.ttf')}
-@font-face{font-family: 'fontR';src: url('NanumSquare.ttf')}
-@font-face{font-family: 'fontRB';src: url('NanumSquareR.ttf')}
-@font-face{font-family: 'fontL';src: url('NanumSquareL.ttf')}
+@font-face{font-family: 'fontB';src: url('../Resources/Font/NanumSquareB.ttf')}
+@font-face{font-family: 'fontR';src: url('../Resources/Font/NanumSquare.ttf')}
+@font-face{font-family: 'fontRB';src: url('../Resources/Font/NanumSquareR.ttf')}
+@font-face{font-family: 'fontL';src: url('../Resources/Font/NanumSquareL.ttf')}
 
 .fontB{font-family: 'fontB';}
 .fontRB{font-family: 'fontRB';}
@@ -86,6 +86,7 @@ h3{
     padding-bottom: 16px 16px;
     text-align:center; 
     margin-top: 2%;
+    margin-bottom: 4%;
 }
 .button{
     display:inline-block;
@@ -96,8 +97,26 @@ h3{
     background-color:inherit;
     text-align:center;
     font-size: 30px;
+    cursor: pointer;
 }
 .button:hover{color:#D97992;}
+
+
+/*
+img{
+    opacity:50%;
+    margin: 0 auto 0;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    height: 40px;
+    border:1px solid rgb(180,180,180);
+}
+
+img:hover{
+    opacity:100%;
+}
 
 /*
 .search_container {
@@ -108,18 +127,36 @@ h3{
 }  
 */
 
-#search_bar{
+#search_container{
     width: 60%;
     position: relative;
     display: flex;
     margin: 4% auto 0;
+}
+
+.search_icon{
+    width:4.5%;
+    border:1px solid rgb(180,180,180);
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+
+.fa-2x{
+    color: rgb(180,180,180);
+    padding-top: 6px;
+    padding-left: 3px;
+}
+
+#search_bar{
+    width: 95.5%;
     border: 1px solid rgb(180,180,180);
     padding: 5px;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
     outline: none;
     font-size: 20px;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 /*
@@ -167,10 +204,9 @@ h3{
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.content_campus .content_head{color: #82C3CE;}
-.content_engineering .content_head{color:#F59B5D;}
-.content_office .content_head{color:#D97992;}
-.content_student .content_head{color:#9DB09C;}
+img{
+    padding-top: 15px;
+}
 
 .content_tail{
     width: 100%;
@@ -188,18 +224,26 @@ h3{
 }
 
 .content_tail:after {
-    content: '»';
+    content: url("../Resources/Notices/arrow_line.png");
+    padding-top: 2px;
+    right: 40px;
     position: absolute;
     opacity: 0;  
-    right: -20px;
     transition: 0.5s;
-  }
-  
+}
+ 
 .content_tail:hover{
-    padding-left: 8px;
-  }
+    padding-left: 35px;
+}
   
 .content_tail:hover:after {
     opacity: 1;
-    right: 10px;
+    right: 20px;
   }
+
+.bottom{
+    color: rgb(122, 122, 122);
+    text-align: right;
+    font-size: 10px;
+    background-color: #F2F2F2;
+}

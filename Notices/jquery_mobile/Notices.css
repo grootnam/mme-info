@@ -1,7 +1,7 @@
-@font-face{font-family: 'fontB';src: url('../Resources/Font/NanumSquareB.ttf')}
-@font-face{font-family: 'fontR';src: url('../Resources/Font/NanumSquare.ttf')}
-@font-face{font-family: 'fontRB';src: url('../Resources/Font/NanumSquareR.ttf')}
-@font-face{font-family: 'fontL';src: url('../Resources/Font/NanumSquareL.ttf')}
+@font-face{font-family: 'fontB';src: url('../../Resources/Font/NanumSquareB.ttf')}
+@font-face{font-family: 'fontR';src: url('../../Resources/Font/NanumSquare.ttf')}
+@font-face{font-family: 'fontRB';src: url('../../Resources/Font/NanumSquareR.ttf')}
+@font-face{font-family: 'fontL';src: url('../../Resources/Font/NanumSquareL.ttf')}
 
 .fontB{font-family: 'fontB';}
 .fontRB{font-family: 'fontRB';}
@@ -21,7 +21,7 @@ h1{
     font-size: 80px;
     vertical-align: middle;
     padding-left: 10%;
-    color: #7FBC7A;
+    color: #D97992;
 }
 
 h2{
@@ -31,6 +31,14 @@ h2{
     padding: 2% 3%;
 }
 
+h3{
+    display: flex;
+    font-size: 60px;
+    vertical-align: middle;
+    padding-left: 10%;
+}
+
+/*
 .separator{
     width:80%;
     border-left:none;
@@ -71,6 +79,7 @@ h2{
     border:none;
     transition: all .5s;
 }
+*/
 
 .gray{color:rgb(180, 180, 180)!important;}
 .gray_clicked{color:#000000!important;}
@@ -89,62 +98,54 @@ h2{
     background-color:inherit;
     text-align:center;
     font-size: 30px;
+    transition: all .2s;
     cursor: pointer;
 }
-.button:hover{color:#7FBC7A;}
+.button:hover{color:#D97992;}
 
-#search_container{
+/*
+.search_container {
     width: 60%;
     position: relative;
     display: flex;
     margin: 4% auto 0;
-}
-
-.search_icon{
-    width:4.5%;
-    border:1px solid rgb(180,180,180);
-    border-radius: 5px 0 0 5px;
-    border-right: none;
-}
-
-.fa-2x{
-    color: rgb(180,180,180);
-    padding-top: 6px;
-    padding-left: 3px;
-}
+}  
+*/
 
 #search_bar{
-    width: 95.5%;
+    width: 60%;
+    position: relative;
+    display: flex;
+    margin: 4% auto 0;
     border: 1px solid rgb(180,180,180);
     padding: 5px;
     height: 40px;
-    border-radius: 0 5px 5px 0;
-    border-left: none;
+    border-radius: 5px;
     outline: none;
     font-size: 20px;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
-.write{
-    font-size: 15px;
-    margin-left: 10px;
-    width: 100px;
-    background-color: rgb(180,180,180);
-    border-radius: 5px;
-    color: white;
-    border: none;
-    transition: 0.2s;
-}
-
-.write:hover{
-    background-color: #7FBC7A;
-    transition: 0.2s;
+/*
+.search_button{
+    width: 65px;
+    height: inherit;
+    -webkit-text-stroke: 1.5px white;
+    border: 1px solid rgb(180,180,180);
+    text-align: center;
+    color: rgb(180,180,180);
+    background-color: white;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
     cursor: pointer;
+    font-size: 30px;
 }
 
-#All, #Class, #Career, #Etc{
-    margin-bottom: 100px;
+.search_button:hover{
+    color: rgb(120,120,120);
+    transition: all .2s;
 }
+*/
 
 #content_container{
     width: 70%;
@@ -152,7 +153,7 @@ h2{
     margin: 4% auto 0;
 }
 
-.content_class, .content_career, .content_etc{
+.content_campus, .content_engineering, .content_office, .content_student{
     position: relative;
     display: flex;
     margin: 30px 0;
@@ -170,9 +171,10 @@ h2{
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.content_class .content_head{color: #82C3CE;}
-.content_career .content_head{color:#FACE76;}
-.content_etc .content_head{color:#D97992;}
+.content_campus .content_head{color: #82C3CE;}
+.content_engineering .content_head{color:#F59B5D;}
+.content_office .content_head{color:#D97992;}
+.content_student .content_head{color:#9DB09C;}
 
 .content_tail{
     width: 100%;
@@ -190,26 +192,27 @@ h2{
 }
 
 .content_tail:after {
-    content: url("../Resources/Notices/arrow_line.png");
-    padding-top: 2px;
-    right: 40px;
-    position: absolute;
+    position: relative;
+    content: '»';
+    text-align: right;
     opacity: 0;  
+    
     transition: 0.5s;
-}
+  }
   
 .content_tail:hover{
-    padding-left: 35px;
+    padding-left: 8px;
   }
   
 .content_tail:hover:after {
     opacity: 1;
-    right: 20px;
+    right: 8px;
   }
 
-.bottom{
+.ui-footer{
     color: rgb(122, 122, 122);
     text-align: right;
     font-size: 10px;
     background-color: #F2F2F2;
+    border-top-color: none !important;
 }

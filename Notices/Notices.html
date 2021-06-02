@@ -5,7 +5,8 @@
         <title>NOTICES</title>
         <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
         <link rel="stylesheet" href="Notices.css">
-        <script src="jquery-3.6.0.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="Notices.js"></script>
     </head>
 
@@ -17,8 +18,7 @@
           <h1>NOTICE.</h1>
           <h3>공지사항</h3>
           <div class="separator"></div>
-        </div>
-
+        </div> 
         <!--------------------------------------Content--------------------------------------->
         <div data-role="content">
           <div class="container">
@@ -30,55 +30,71 @@
                 <button class="bar-item button tablink fontB" onclick="openMenu(event,'Student')">학생회</button>
             </div>
             <!--------------------------------------All--------------------------------------->          
-            <div id="All" class="container menu">
-              <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력"> 
-
+            <div id="All" class="menu">
+              
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
+               
               <div id = "content_container">
                 <span class ="content_campus">
-                  <div class ="content_head">교</div>
+                  <div class ="content_head"><img src="../Resources/Notices/pen-blue.png"></div>
                   <a class="content_tail" href="#">컴공이랑 우리과랑 다른점</a>
                 </span>
 
                 <span class="content_engineering">  
-                  <div class="content_head">공</div>
+                  <div class="content_head"><img src="../Resources/Notices/pen-yellow.png"></div>
                   <a class="content_tail" href="#">네이버로 취업한 선배 있나요?</a>
                 </span>
 
                 <span class="content_student">  
-                  <div class="content_head">학생</div>
+                  <div class="content_head"><img src="../Resources/Notices/pen-green.png"></div>
                   <a class="content_tail" href="#">간식행사 때 뭐 줘요?</a>
                 </span>
 
                 <span class="content_office">  
-                  <div class="content_head">학과</div>
+                  <div class="content_head"><img src="../Resources/Notices/pen-pink.png"></div>
                   <a class="content_tail" href="#">소공 과제 질문있습니다!</a>
                 </span>
 
                 <span class="content_engineering">  
-                  <div class="content_head">공</div>
+                  <div class="content_head"><img src="../Resources/Notices/pen-yellow.png"></div>
                   <a class="content_tail" href="#">멀티미디어객체지향 수업 보강 언제하나요?</a>
                 </span>
               </div>
             </div>
 
             <!--------------------------------------Campus--------------------------------------->
-            <div id="Campus" class="container menu" style="display:none">
-              <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력"> 
+            <div id="Campus" class="menu" style="display:none">
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
             </div>
 
             <!--------------------------------------Engineering--------------------------------------->
-            <div id="Engineering" class="container menu" style="display:none">
-              <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">   
+            <div id="Engineering" class="menu" style="display:none">
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
             </div>
 
             <!--------------------------------------Office--------------------------------------->
-            <div id="Office" class="container menu" style="display:none">
-              <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">   
+            <div id="Office" class="menu" style="display:none">
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
             </div>
 
             <!--------------------------------------Student--------------------------------------->
-            <div id="Student" class="container menu" style="display:none">
-              <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">   
+            <div id="Student" class="menu" style="display:none">
+              <div id="search_container">
+                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
+                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
+              </div>
             </div>
 
           </div> 
@@ -86,8 +102,10 @@
 
         <!----------------------------------------Footer--------------------------------------------->
         <div data-role="footer">
-        </div>
-
+          <p class="bottom">서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
+            동국대학교 멀티미디어공학과<br>
+            E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
+          </p>
       </div>
     </body>
 </html>

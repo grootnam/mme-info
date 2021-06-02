@@ -1,5 +1,5 @@
 function openMenu(evt, menuName) {
-  var i, x, tablinks, mainId, id, span;
+  var i, x, tablinks;
   x = document.getElementsByClassName("menu");
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
@@ -12,7 +12,8 @@ function openMenu(evt, menuName) {
   evt.currentTarget.className += " gray_clicked";
 }
 
-function searchFunction(){
+function searchFunction()
+{
   var input, filter, id, span, a, txtValue;
     input = document.getElementById("search_bar");
     filter = input.value.toUpperCase();
@@ -27,18 +28,4 @@ function searchFunction(){
             span[i].style.display = "none";
         }
     }
-}
-
-function sort(menuName){
-  var mainId, id, span;
-  mainId = document.getElementById("All");//All
-  id = mainId.getElementById("content_container");//content_container
-  span = id.getElementsByTagName("span");//content_*
-  for(i=0; i<span.length; i++){
-    if(menuName == span[i].className){
-      span[i].style.display ="";
-    } else{
-      span[i].style.display = "none";
-    }
-  }
 }
