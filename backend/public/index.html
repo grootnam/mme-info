@@ -3,26 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>MME INFO 답변달아주기</title>
     <script>
-      fetch("https://us-central1-mme-info.cloudfunctions.net/apis-getWorksById?id=0").then((resposne)=>resposne.json()).then((datas)=>{
-        var ndiv = document.createElement('div');
+      // fetch("https://us-central1-mme-info.cloudfunctions.net/apis-getWorksById?id=0").then((resposne)=>resposne.json()).then((datas)=>{
+      //   var ndiv = document.createElement('div');
 
-        datas.forEach(data => {
-          var nH1=document.createElement('h1');
-          nH1.innerHTML=String(data)
-          ndiv.appendChild(nH1)  
-        });
+      //   datas.forEach(data => {
+      //     var nH1=document.createElement('h1');
+      //     nH1.innerHTML=String(data)
+      //     ndiv.appendChild(nH1)  
+      //   });
 
-        var cur=document.getElementById("container");
-        cur.appendChild(ndiv)
-      })
+      //   var cur=document.getElementById("container");
+      //   cur.appendChild(ndiv)
+      // })
     </script>
    
   </head>
   <body>
     <div id="container">
-
+      
     </div>
   </body>
 </html>
