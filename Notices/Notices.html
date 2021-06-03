@@ -1,111 +1,126 @@
 <!DOCTYPE html>
 <html>
-    <meta charset="utf-8">
-    <head>
-        <title>NOTICES</title>
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
-        <link rel="stylesheet" href="Notices.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="Notices.js"></script>
-    </head>
+  <meta charset="utf-8">
+  <head>
+    <title>NOTICES</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
+    <link rel="stylesheet" href="Notices.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="../Notices/all.min.css" />
+    <link rel="stylesheet" href="../Notices/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="Notices.js"></script>
+  
+    <style>
+      @media (max-width: 1000px) {
+          body{
+              font-size: 0.5em;
+          }
+          .main-up {
+              padding-top: 35%;
+          }
+          img{
+            width: 0.5em;
+            height: 0.5em;
+          }
+          .menu{
+            width: 80% ;margin: 3% auto 0;
+          }
+          .button{
+            font-size: 1.5em;
+          }
+          .content_tail, .content_head{
+            font-size: 1.2em;
+          }
+      }
+      @media (min-width: 1001px) {
+          .main-up {
+              padding-top: 13%
+          }
+          #menu{
+              width: 40%
+          }
+          img{
+            width: 0.7em;
+            height: 0.7em;
+          }
+          .menu{
+            width: 60% ;margin: 3% auto 0;
+          }
+          .button{
+            font-size: 1.8em;
+          }
+          .content_tail, .content_head{
+            font-size: 1.5em;
+          }
+      }
+    </style>
+  </head>
 
-    <body>
-      <div data-role="page">
-        <!---------------------------------------Header------------------------------------->  
-        <div data-role="header">
-          <h2>MMESEUM</h2>
-          <h1>NOTICE.</h1>
-          <h3>공지사항</h3>
-          <div class="separator"></div>
-        </div> 
-        <!--------------------------------------Content--------------------------------------->
-        <div data-role="content">
-          <div class="container">
-            <div class="bar gray">
-                <button class="bar-item button tablink fontB font_size gray_clicked" onclick="openMenu(event,'All')">전체</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Campus')">교내</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Engineering')">공과대학</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Office')">학과</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Student')">학생회</button>
-            </div>
-            <!--------------------------------------All--------------------------------------->          
-            <div id="All" class="menu">
-              
-              <div id="search_container">
-                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
-                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
-              </div>
-               
-              <div id = "content_container">
-                <span class ="content_campus">
-                  <div class ="content_head"><img src="../Resources/Notices/pen-blue.png"></div>
-                  <a class="content_tail" href="#">컴공이랑 우리과랑 다른점</a>
-                </span>
+  <body>
+    <div data-role="page">
+      <!---------------------------------------Header------------------------------------->  
+      <div data-role="header" style="background-color: #F0B1C2;
+                                    text-align:left;
+                                    vertical-align: bottom;">
+        <p style="display: flex;
+                  font-size: 1.5em;
+                  vertical-align: middle;
+                  padding: 2% 3%;">MMESEUM</p>
+        <p style="display: flex;
+                  font-size: 5em;
+                  vertical-align: middle;
+                  padding-left: 10%;
+                  color: white;">NOTICE.</p>                                         
+      </div>
 
-                <span class="content_engineering">  
-                  <div class="content_head"><img src="../Resources/Notices/pen-yellow.png"></div>
-                  <a class="content_tail" href="#">네이버로 취업한 선배 있나요?</a>
-                </span>
-
-                <span class="content_student">  
-                  <div class="content_head"><img src="../Resources/Notices/pen-green.png"></div>
-                  <a class="content_tail" href="#">간식행사 때 뭐 줘요?</a>
-                </span>
-
-                <span class="content_office">  
-                  <div class="content_head"><img src="../Resources/Notices/pen-pink.png"></div>
-                  <a class="content_tail" href="#">소공 과제 질문있습니다!</a>
-                </span>
-
-                <span class="content_engineering">  
-                  <div class="content_head"><img src="../Resources/Notices/pen-yellow.png"></div>
-                  <a class="content_tail" href="#">멀티미디어객체지향 수업 보강 언제하나요?</a>
-                </span>
-              </div>
-            </div>
-
-            <!--------------------------------------Campus--------------------------------------->
-            <div id="Campus" class="menu" style="display:none">
-              <div id="search_container">
-                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
-                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
-              </div>
-            </div>
-
-            <!--------------------------------------Engineering--------------------------------------->
-            <div id="Engineering" class="menu" style="display:none">
-              <div id="search_container">
-                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
-                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
-              </div>
-            </div>
-
-            <!--------------------------------------Office--------------------------------------->
-            <div id="Office" class="menu" style="display:none">
-              <div id="search_container">
-                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
-                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
-              </div>
-            </div>
-
-            <!--------------------------------------Student--------------------------------------->
-            <div id="Student" class="menu" style="display:none">
-              <div id="search_container">
-                <i class="search_icon fa fa-search fa-2x" aria-hidden="true"></i>
-                <input type="text" id="search_bar" onkeyup="searchFunction()" placeholder="검색어 입력">
-              </div>
-            </div>
-
-          </div> 
+      <!--------------------------------------Content--------------------------------------->
+      <div data-role="content" style="padding-bottom: 2em 2em;
+                                      text-align:center; 
+                                      margin-top: 2%;
+                                      margin-bottom: 4%;">
+        <div data-role="navbar" style="width:80%;
+                                      margin: 0 auto 0;
+                                      overflow:hidden;"
+                                      class="gray">
+          <ul>
+            <li class="bar-item button tablink fontB gray_clicked" onclick="openMenu(event,'All'); makePage();">  전체</li>
+            <li class="bar-item button tablink fontB" onclick="openMenu(event,'Campus'); makeCertainPage('campus');"><img src="../Resources/Notices/circle_blue.png">  교내</i></li>
+            <li class="bar-item button tablink fontB" onclick="openMenu(event,'Engineering'); makeCertainPage('engineering');"><img src="../Resources/Notices/circle_green.png">  공과대학</i></li>
+            <li class="bar-item button tablink fontB" onclick="openMenu(event,'Office'); makeCertainPage('office');"><img src="../Resources/Notices/circle_yellow.png">  학과</li>
+            <li class="bar-item button tablink fontB" onclick="openMenu(event,'Student'); makeCertainPage('student');"><img src="../Resources/Notices/circle_pink.png">  학생회</li>
+          </ul>
+        </div>
+        
+        <!--------------------------------------All--------------------------------------->          
+        <div id="All" class="menu">                                     
+          <ul id="content_container" data-role="listview" data-filter="true" data-filter-placeholder="검색어 입력" data-filter-theme="a" data-inset="true"></ul>
         </div>
 
-        <!----------------------------------------Footer--------------------------------------------->
-        <div data-role="footer">
-          <p class="bottom">서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
-            동국대학교 멀티미디어공학과<br>
-            E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
-          </p>
-      </div>
-    </body>
+        <!--------------------------------------Campus--------------------------------------->
+        <div id="Campus" class="menu" style="display: none"></div>
+
+        <!--------------------------------------Engineering--------------------------------------->
+        <div id="Engineering" class="menu" style="display: none"></div>
+
+        <!--------------------------------------Office--------------------------------------->
+        <div id="Office" class="menu" style="display: none"></div>
+
+        <!--------------------------------------Student--------------------------------------->
+        <div id="Student" class="menu" style="display: none"></div>
+
+      </div> 
+    </div>
+
+    <!----------------------------------------Footer--------------------------------------------->
+    <div data-role="footer" style="text-align: right; font-family:'fontL'; font-size: 0.5em;">
+      <p>서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
+        동국대학교 멀티미디어공학과<br>
+        E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
+      </p>
+    </div>
+  </body>
 </html>

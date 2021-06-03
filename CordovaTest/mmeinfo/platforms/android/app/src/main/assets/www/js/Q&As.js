@@ -116,17 +116,3 @@ function searchFunction(){
         }
     }
 }
-
-function sort(menuName){
-  var mainId, id, span;
-  mainId = document.getElementById("All");//All
-  id = mainId.getElementById("content_container");//content_container
-  span = id.getElementsByTagName("span");//content_*
-  for(i=0; i<span.length; i++){
-    if(menuName == span[i].className){
-      span[i].style.display ="";
-    } else{
-      span[i].style.display = "none";
-    }
-  }
-}

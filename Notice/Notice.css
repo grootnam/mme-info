@@ -21,25 +21,26 @@ h1{
     font-size: 80px;
     vertical-align: middle;
     padding-left: 10%;
-    color: #D97992;
+    color: white;
 }
 
 h2{
+    display: flex;
+    font-size: 80px;
+    vertical-align: middle;
+    padding-left: 10%;
+    color: white;
+    padding-top: -10px;
+}
+
+h3{
     display: flex;
     font-size: 20px;
     vertical-align: middle;
     padding: 2% 3%;
 }
 
-.separator{
-    width:80%;
-    border-left:none;
-    border-right:none;
-    border-bottom:none; 
-    border-top: 1px solid rgb(180, 180, 180);
-    vertical-align: middle;
-    margin: 0 auto 0;
-}
+
 
 .container{
     width: 70%;
@@ -58,13 +59,6 @@ h2{
     clear: left;
     line-height: 200%;
     padding: 2%;
-    border-radius: 5px;
-    border: 1px solid rgb(180,180,180);
-    margin-bottom: 2%;
-}
-
-.post_attach{
-    height: 45px;
     border-radius: 5px;
     border: 1px solid rgb(180,180,180);
     margin-bottom: 2%;
