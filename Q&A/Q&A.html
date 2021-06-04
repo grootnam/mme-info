@@ -1,111 +1,130 @@
 <!DOCTYPE html>
 <html>
-    <meta charset="utf-8">
-    <head>
-        <title>Q&A</title>
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
-        <link rel="stylesheet" href="Q&A.css">
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="../Resources/JQuery/overall.min.css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <head>
+      <title>Q&A</title>
+      <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
+      <link rel="stylesheet" href="Q&A.css">
+      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+      <link rel="stylesheet" href="../Resources/JQuery/overall.min.css" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script src="Q&A.js"></script>
-        <style>
-          @media (max-width: 1000px) {
-              body{
-                  font-size: 0.5em;
-              }
-              .main-up {
-                  padding-top: 35%;
-              }
-              .comment_head, .comment_tail{
-                font-size: auto;
-              }
-          }
-          @media (min-width: 1001px) {
-              .main-up {
-                  padding-top: 13%
-              }
-              #menu{
-                  width: 40%
-              }
-              .comment_head, .comment_tail{
-                font-size: 1.2em;
-              }
-          }
-        </style>
-    </head>
+      <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+      <script src="Q&A.js"></script>
+      <style>
+        @media (max-width: 1000px) {
+            body{
+                font-size: 0.5em;
+            }
+            .main-up {
+                padding-top: 35%;
+            }
+            .comment_head, .comment_tail{
+              font-size: auto;
+            }
+        }
+        @media (min-width: 1001px) {
+            .main-up {
+                padding-top: 13%
+            }
+            #menu{
+                width: 40%
+            }
+            .comment_head, .comment_tail{
+              font-size: 1.2em;
+            }
+        }
+      </style>
+  </head>
 
-    <body>
-      <div data-role="page">
-        <!---------------------------------------Header------------------------------------->  
-        <div data-role="header" style="background-color: #A0C29E;
-                                  text-align:left;
-                                  vertical-align: bottom;">
-          <p style="display: flex;
-                    font-size: 1.5em;
-                    vertical-align: middle;
-                    padding: 2% 3%;">MMESEUM</p>
-          <p style="display: flex;
-                    font-size: 5em;
-                    vertical-align: middle;
-                    padding-left: 10%;
-                    color: white;">Q&A.</p>                                         
+  <body>
+    <div data-role="page">
+      <!----------------------------------근남 부분------------------------------------->
+      <div data-role="header" id="header">
+        <div id="top_menu">
+          <div id="header_title">
+            <img src="../Resources/header_Menu_Image/pageTitle.png" id="header_title_img">
+          </div>
+          <div id="header_menu">
+            <button id="showRightMenuOpen" alt="menu" onclick="activeNav()">
+              <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
+            </button>
+
+            <script type="text/javascript">
+              function activeNav(){ 
+                var m_menu = document.getElementById("menu");
+                var m_header = document.getElementById("header")
+                var m_body = document.getElementsByTagName("body");
+                if(m_menu.style.display =='none'){
+                  m_menu.style.display = 'block';
+                  m_header.style.backgroundColor="#E8E8E8";
+                  m_body[0].style.backgroundColor = "#E8E8E8";
+                  m_body[0].style.opacity= "1"
+                }else{
+                  m_menu.style.display = 'none';
+                  m_header.style.backgroundColor="#FFFFFF";
+                  m_body[0].style.backgroundColor = "#FFFFFF";
+                  m_body[0].style.opacity= "1"
+                }
+              }
+            </script>
+          </div>
         </div>
 
-        <!--------------------------------------Content--------------------------------------->
-        <div data-role="content" style="padding-bottom: 2em 2em;
-                                        text-align:center; 
-                                        margin-top: 2%;
-                                        margin-bottom: 4%;">
-          <div class="container" style= "width: 70%;
-                                        margin: 0 auto 0;">
-            <div class="post_container">
-              <p class="post_title_Q">Q:</p>
-              <p class="post_title">간식행사 때 뭐 줘요?</p>
-              <div class="post_expl">올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문에 학교 못 가는데 간식행사는 어떻게 진행되나요? 저는 맘스터치 먹었던 기억이 있는데 이번엔 뭘 줄까요? 알촌? 저는 서브웨이도 먹고 싶은데 서브웨이가 없어졌다면서요?!? 매우 놀라워.. 서브웨이 그립네요..</div>
-            </div>
+        <p style="background-color: #A0C29E; 
+                  padding-top: 13%; 
+                  margin: 0 0 0 0;
+                  font-family: 'fontB';
+                  font-size: 5em;
+                  padding-bottom: 3%;
+                  padding-left: 10%;
+                  color: white;
+                  ">Q&A.</p>                                 
 
-            <div id="comment_container">
-              <p style="float: left;
-                        font-family: 'fontB';
-                        text-align: left;
-                        font-size: 1.8em;
-                        line-height: 1.8em;
-                        width: 2em;">댓글</p>
-              <button style="
-                        float: right;
-                        width: auto;
-                        font-family: 'fontB';
-                        text-align: center;
-                        font-size: 1em;
-                        background-color: #A0C29E;
-                        color: white;
-                        margin-bottom: 1em;
-                        margin-top: 2.1em;">+글쓰기</button>             
-
-              <span class="comment">
-                  <div class="comment_head">A</div>
-                  <div class="comment_tail">베스킨라빈스 파인트 기프티콘</div>
-              </span>
-
-              <span class="comment">
-                  <div class="comment_head">A</div>
-                  <div class="comment_tail">상록원 식사권 아니면 내찜닭 기프티콘이요</div>
-              </span>
-            </div>
-          </div>   
-        </div>
-        
-        <!----------------------------------------Footer--------------------------------------------->
-        <div data-role="footer">
-          <p class="bottom">서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
-            동국대학교 멀티미디어공학과<br>
-            E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
-          </p>
-        </div>
       </div>
-    </body>
+
+      <!--------------------------------------Content--------------------------------------->
+      <div data-role="content" style="padding-bottom: 2em 2em;
+                                      text-align:center; 
+                                      margin-top: 2%;
+                                      margin-bottom: 4%;">
+        <div class="container" style= "width: 70%;
+                                      margin: 0 auto 0;">
+          <div class="post_container">
+            <p class="post_title_Q">Q:</p>
+            <p class="post_title">간식행사 때 뭐 줘요?</p>
+            <div class="post_expl">올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문에 학교 못 가는데 간식행사는 어떻게 진행되나요? 저는 맘스터치 먹었던 기억이 있는데 이번엔 뭘 줄까요? 알촌? 저는 서브웨이도 먹고 싶은데 서브웨이가 없어졌다면서요?!? 매우 놀라워.. 서브웨이 그립네요..</div>
+          </div>
+
+          <div id="comment_container">
+            <p style="float: left;
+                      font-family: 'fontB';
+                      text-align: left;
+                      font-size: 1.8em;
+                      line-height: 1.8em;
+                      width: 2em;">댓글</p>    
+
+            <span class="comment">
+                <div class="comment_head">A</div>
+                <div class="comment_tail">베스킨라빈스 파인트 기프티콘</div>
+            </span>
+
+            <span class="comment">
+                <div class="comment_head">A</div>
+                <div class="comment_tail">상록원 식사권 아니면 내찜닭 기프티콘이요</div>
+            </span>
+          </div>
+        </div>   
+      </div>
+      
+      <!----------------------------------------Footer--------------------------------------------->
+      <div data-role="footer" data-position="fixed" style="display: fixed; background-color:#A0C29E; display:flex; padding: 1em 0;">
+        <div style="float:left; padding-left: 16%; padding-right: 1em;width: 65%;font-size: 1em;">
+          <input type="text" placeholder="댓글을 입력하세요">
+        </div>
+        <li class="fa fa-paper-plane-o send" onclick()="" aria-hidden="true"></li>
+      </div>
+    </div>
+  </body>
 </html>

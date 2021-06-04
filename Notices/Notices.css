@@ -24,6 +24,45 @@ a { text-decoration:none;}
 a:link { color: black; }
 a:visited { color: black; }
 
+#top_menu{
+    width: 100%; 
+    overflow: hidden; 
+    position: fixed; 
+    top: 0px; 
+    display: block; 
+    background-color: #F2F2F2;
+}
+
+#header_title{
+    width: 27%; 
+    height: 100%; 
+    overflow: hidden; 
+    position: relative; 
+    display: inline-block; 
+    padding-left: 3%;
+}
+
+#header_title_img{
+    height: 50%; 
+    display: inline-block; 
+    vertical-align: middle;
+}
+
+#header_menu{
+    float: right;
+    right: 0;
+    width: 70%; 
+    height: 100%; 
+    overflow: hidden; 
+    position: relative; 
+}
+
+#showRightMenuOpen{
+    position: fixed;
+    border-style: none; 
+    background-color: white;
+}
+
 .bar-item{
     width:100%;
     display:block;

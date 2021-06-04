@@ -40,48 +40,83 @@
 
     <body>
       <div data-role="page">
-        <!---------------------------------------Header------------------------------------->  
-        <div data-role="header" style="background-color: #F0B1C2;
-                                  text-align:left;
-                                  vertical-align: bottom;">
-          <p style="display: flex;
-                    font-size: 1.5em;
-                    vertical-align: middle;
-                    padding: 2% 3%;">MMESEUM</p>
-          <p style="display: flex;
-                    font-size: 5em;
-                    vertical-align: middle;
-                    padding-left: 10%;
-                    color: white;">NOTICE.</p>                                         
-        </div>
+        <!----------------------------------근남 부분------------------------------------->
+        <div data-role="header" id="header">
+          <div id="top_menu">
+            <div id="header_title">
+              <img src="../Resources/header_Menu_Image/pageTitle.png" id="header_title_img">
+            </div>
+            <div id="header_menu">
+              <button id="showRightMenuOpen" alt="menu" onclick="activeNav()">
+                <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
+              </button>
 
-        <!--------------------------------------Content--------------------------------------->
-        <div data-role="content" style="padding-bottom: 2em 2em;
-                                        text-align:center; 
-                                        margin-top: 2%;
-                                        margin-bottom: 4%;">
+              <script type="text/javascript">
+                function activeNav(){ 
+                  var m_menu = document.getElementById("menu");
+                  var m_header = document.getElementById("header")
+                  var m_body = document.getElementsByTagName("body");
+                  if(m_menu.style.display =='none'){
+                    m_menu.style.display = 'block';
+                    m_header.style.backgroundColor="#E8E8E8";
+                    m_body[0].style.backgroundColor = "#E8E8E8";
+                    m_body[0].style.opacity= "1"
+                  }else{
+                    m_menu.style.display = 'none';
+                    m_header.style.backgroundColor="#FFFFFF";
+                    m_body[0].style.backgroundColor = "#FFFFFF";
+                    m_body[0].style.opacity= "1"
+                  }
+                }
+              </script>
+            </div>
+          </div>
+
+          <p style="background-color: #F0B1C2; 
+                    padding-top: 13%; 
+                    margin: 0 0 0 0;
+                    font-family: 'fontB';
+                    font-size: 5em;
+                    padding-bottom: 3%;
+                    padding-left: 10%;
+                    color: white;
+                    ">NOTICE.</p>                                 
+
+        </div>
+        <!--------------------------------------Content-------------------------------------->
+        <div data-role="content" style="margin-bottom: 2em;">
+                    
           <div class="container" style= "width: 70%;
                                         margin: 0 auto 0;">
-            <div class="post_container">
-              <p class="post_title">2021학년도 2학기 복수(연계) 전공</p>
-              <div class="post_expl">1. 신청 대상: 2021학년도 1학기 현재, 2학기 이상 재학생(휴학생 신청불가)<br>(편입생: 편입한 학기부터 신청 가능)<br>
-                                      2. 신청 기간: 2021. 6. 1.(화) 10:00 ~ 6. 4.(금) 23:59<br> 
-                                      3. 신청 방법: uDRIMS 신청<br>
-                                      (경로: uDRIMS 학사정보→ 학적→복수전공관리→복수전공신청등록)<br>
-                                      4. 전공별 선발 가능 인원: 제한 없음 (단, 아래의 경우는 신청 불가)<br>
-                                      ※ 글로벌무역학전공, 연극학부, 스포츠문화학과, 약학과, 미술학부 불교미술전공, 한국화전공으로 복수전공 불가<br>
-                                      ※ 미래융합대학 소속 학과 복수전공의 경우 소속 학과 간 복수전공 및 타 단과대학으로의 복수전공 이수는<br>
-                                      허가할 수 있으나, 타 단과대학에서 미래융합대학 소속 학과로의 복수전공 이수는 허가할 수 없음.<br>
-                                      5. 복수(연계)전공 합격 발표: 2021. 7. 14.(수) 예정 - uDRIMS 개별 조회</div>
-              <div class="post_link_title">참고 링크</div>
-              <div class="post_link"><a href="http://www.dongguk.edu/mbs/kr/jsp/board/view.jsp?spage=2&boardId=3638&boardSeq=26735971&id=kr_010801000000&column=&search=&categoryDepth=&mcategoryId=0">2021학년도 2학기 복수(연계)전공 신청</a></div>
-            </div>
+            <p class="post_title">2021학년도 2학기 복수(연계) 전공</p>
+            <div class="post_expl">1. 신청 대상: 2021학년도 1학기 현재, 2학기 이상 재학생(휴학생 신청불가)<br>(편입생: 편입한 학기부터 신청 가능)<br>
+                                    2. 신청 기간: 2021. 6. 1.(화) 10:00 ~ 6. 4.(금) 23:59<br> 
+                                    3. 신청 방법: uDRIMS 신청<br>
+                                    (경로: uDRIMS 학사정보→ 학적→복수전공관리→복수전공신청등록)<br>
+                                    4. 전공별 선발 가능 인원: 제한 없음 (단, 아래의 경우는 신청 불가)<br>
+                                    ※ 글로벌무역학전공, 연극학부, 스포츠문화학과, 약학과, 미술학부 불교미술전공, 한국화전공으로 복수전공 불가<br>
+                                    ※ 미래융합대학 소속 학과 복수전공의 경우 소속 학과 간 복수전공 및 타 단과대학으로의 복수전공 이수는<br>
+                                    허가할 수 있으나, 타 단과대학에서 미래융합대학 소속 학과로의 복수전공 이수는 허가할 수 없음.<br>
+                                    5. 복수(연계)전공 합격 발표: 2021. 7. 14.(수) 예정 - uDRIMS 개별 조회1. 신청 대상: 2021학년도 1학기 현재, 2학기 이상 재학생(휴학생 신청불가)<br>(편입생: 편입한 학기부터 신청 가능)<br>
+                                    2. 신청 기간: 2021. 6. 1.(화) 10:00 ~ 6. 4.(금) 23:59<br> 
+                                    3. 신청 방법: uDRIMS 신청<br>
+                                    (경로: uDRIMS 학사정보→ 학적→복수전공관리→복수전공신청등록)<br>
+                                    4. 전공별 선발 가능 인원: 제한 없음 (단, 아래의 경우는 신청 불가)<br>
+                                    ※ 글로벌무역학전공, 연극학부, 스포츠문화학과, 약학과, 미술학부 불교미술전공, 한국화전공으로 복수전공 불가<br>
+                                    ※ 미래융합대학 소속 학과 복수전공의 경우 소속 학과 간 복수전공 및 타 단과대학으로의 복수전공 이수는<br>
+                                    허가할 수 있으나, 타 단과대학에서 미래융합대학 소속 학과로의 복수전공 이수는 허가할 수 없음.<br>
+                                    5. 복수(연계)전공 합격 발표: 2021. 7. 14.(수) 예정 - uDRIMS 개별 조회s</div>
+            <div class="post_link_title">참고 링크</div>
+            <div class="post_link"><a href="http://www.dongguk.edu/mbs/kr/jsp/board/view.jsp?spage=2&boardId=3638&boardSeq=26735971&id=kr_010801000000&column=&search=&categoryDepth=&mcategoryId=0">2021학년도 2학기 복수(연계)전공 신청</a></div>
           </div>   
         </div>
         
         <!----------------------------------------Footer--------------------------------------------->
-        <div data-role="footer">
-          <p class="bottom">서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
+        <div data-role="footer" style="text-align: right;
+                                font-family: 'fontL';
+                                font-size: 0.2em;
+                                line-height: 150%;">
+          <p>서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
             동국대학교 멀티미디어공학과<br>
             E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
           </p>

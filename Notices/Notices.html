@@ -18,9 +18,9 @@
           body{
               font-size: 0.5em;
           }
-          .main-up {
+          /*.main-up {
               padding-top: 35%;
-          }
+          }*/
           img{
             width: 0.5em;
             height: 0.5em;
@@ -39,9 +39,9 @@
           .main-up {
               padding-top: 13%
           }
-          #menu{
+          /*#menu{
               width: 40%
-          }
+          }*/
           img{
             width: 0.7em;
             height: 0.7em;
@@ -61,19 +61,48 @@
 
   <body>
     <div data-role="page">
-      <!---------------------------------------Header------------------------------------->  
-      <div data-role="header" style="background-color: #F0B1C2;
-                                    text-align:left;
-                                    vertical-align: bottom;">
-        <p style="display: flex;
-                  font-size: 1.5em;
-                  vertical-align: middle;
-                  padding: 2% 3%;">MMESEUM</p>
-        <p style="display: flex;
+      <!----------------------------------근남 부분------------------------------------->
+      <div data-role="header" id="header">
+        <div id="top_menu">
+          <div id="header_title">
+            <img src="../Resources/header_Menu_Image/pageTitle.png" id="header_title_img">
+          </div>
+          <div id="header_menu">
+            <button id="showRightMenuOpen" alt="menu" onclick="activeNav()">
+              <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
+            </button>
+
+            <script type="text/javascript">
+              function activeNav(){ 
+                var m_menu = document.getElementById("menu");
+                var m_header = document.getElementById("header")
+                var m_body = document.getElementsByTagName("body");
+                if(m_menu.style.display =='none'){
+                  m_menu.style.display = 'block';
+                  m_header.style.backgroundColor="#E8E8E8";
+                  m_body[0].style.backgroundColor = "#E8E8E8";
+                  m_body[0].style.opacity= "1"
+                }else{
+                  m_menu.style.display = 'none';
+                  m_header.style.backgroundColor="#FFFFFF";
+                  m_body[0].style.backgroundColor = "#FFFFFF";
+                  m_body[0].style.opacity= "1"
+                }
+              }
+            </script>
+          </div>
+        </div>
+
+        <p style="background-color: #F0B1C2; 
+                  padding-top: 13%; 
+                  margin: 0 0 0 0;
+                  font-family: 'fontB';
                   font-size: 5em;
-                  vertical-align: middle;
-                  padding-left: 10%;
-                  color: white;">NOTICE.</p>                                         
+                  padding-bottom: 3%;
+                  padding-left: 0;
+                  color: white;
+                  ">NOTICE.</p>                                 
+
       </div>
 
       <!--------------------------------------Content--------------------------------------->
@@ -115,11 +144,7 @@
     </div>
 
     <!----------------------------------------Footer--------------------------------------------->
-    <div data-role="footer" style="text-align: right; font-family:'fontL'; font-size: 0.5em;">
-      <p>서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
-        동국대학교 멀티미디어공학과<br>
-        E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
-      </p>
+    <div data-role="footer">
     </div>
   </body>
 </html>
