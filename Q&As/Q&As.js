@@ -2,7 +2,7 @@ qnas = [
   {
       type : "career",
       title : "컴공dsadsadsadsadasads다른점",
-      index : 2232
+      index : 5354
   },
   {
       type : "career",
@@ -46,15 +46,15 @@ function makeCertainPage(categoryName){
     }
     var newone = document.createElement('span')
     newone.classList.add('content_'+element.type)
-    var qqq=document.createElement('div')
-    qqq.innerText="Q"
-    qqq.classList.add('content_head', 'fontB')
+    var div=document.createElement('div')
+    div.innerText="Q"
+    div.classList.add('content_head', 'fontB')
     var a = document.createElement('a')
     a.classList.add('content_tail')
     a.innerHTML = element.title
     a.href=element.index
 
-    newone.appendChild(qqq);
+    newone.appendChild(div);
     newone.appendChild(a);
     container.appendChild(newone)
   };
@@ -71,15 +71,15 @@ function makePage(){
   qnas.forEach(element => {
     var newone = document.createElement('span')
     newone.classList.add('content_'+element.type)
-    var qqq=document.createElement('div')
-    qqq.innerText="Q"
-    qqq.classList.add('content_head', 'fontB')
+    var div=document.createElement('div')
+    div.innerText="Q"
+    div.classList.add('content_head', 'fontB')
     var a = document.createElement('a')
     a.classList.add('content_tail')
     a.innerHTML = element.title
     a.href=element.index
 
-    newone.appendChild(qqq);
+    newone.appendChild(div);
     newone.appendChild(a);
     container.appendChild(newone)
   });

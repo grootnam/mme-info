@@ -5,32 +5,80 @@
         <title>Notice</title>
         <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
         <link rel="stylesheet" href="Notice.css">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="../Resources/JQuery/overall.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="jquery-3.6.0.js"></script>
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="Notice.js"></script>
+        <style>
+          @media (max-width: 1000px) {
+              body{
+                  font-size: 0.5em;
+              }
+              .main-up {
+                  padding-top: 35%;
+              }
+              .comment_head, .comment_tail{
+                font-size: auto;
+              }
+          }
+          @media (min-width: 1001px) {
+              .main-up {
+                  padding-top: 13%
+              }
+              #menu{
+                  width: 40%
+              }
+              .comment_head, .comment_tail{
+                font-size: 1.2em;
+              }
+          }
+        </style>
     </head>
 
     <body>
       <div data-role="page">
         <!---------------------------------------Header------------------------------------->  
-        <div data-role="header" style="height: 20%;
-                                      padding-bottom: 10%;
-                                      background-color: #D97992;">
-          <h3>MMESEUM</h3>
-          <h1>NOTICE.</h1>
-          <h2>공지사항</h2>
+        <div data-role="header" style="background-color: #F0B1C2;
+                                  text-align:left;
+                                  vertical-align: bottom;">
+          <p style="display: flex;
+                    font-size: 1.5em;
+                    vertical-align: middle;
+                    padding: 2% 3%;">MMESEUM</p>
+          <p style="display: flex;
+                    font-size: 5em;
+                    vertical-align: middle;
+                    padding-left: 10%;
+                    color: white;">NOTICE.</p>                                         
         </div>
 
         <!--------------------------------------Content--------------------------------------->
-        <div data-role="content">
-            <div class="container">
-                <div class="post">
-                    <p class="post_title">2021학년도 1학기 복수(연계)전공</p>
-                    <div class="post_expl">올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문올해 2021년 1학기 코로나 때문에 학교 못 가는데 간식행사는 어떻게 진행되나요? 저는 맘스터치 먹었던 기억이 있는데 이번엔 뭘 줄까요? 알촌? 저는 서브웨이도 먹고 싶은데 서브웨이가 없어졌다면서요?!? 매우 놀라워.. 서브웨이 그립네요..</div>
-                </div>
-            </div>   
+        <div data-role="content" style="padding-bottom: 2em 2em;
+                                        text-align:center; 
+                                        margin-top: 2%;
+                                        margin-bottom: 4%;">
+          <div class="container" style= "width: 70%;
+                                        margin: 0 auto 0;">
+            <div class="post_container">
+              <p class="post_title">2021학년도 2학기 복수(연계) 전공</p>
+              <div class="post_expl">1. 신청 대상: 2021학년도 1학기 현재, 2학기 이상 재학생(휴학생 신청불가)<br>(편입생: 편입한 학기부터 신청 가능)<br>
+                                      2. 신청 기간: 2021. 6. 1.(화) 10:00 ~ 6. 4.(금) 23:59<br> 
+                                      3. 신청 방법: uDRIMS 신청<br>
+                                      (경로: uDRIMS 학사정보→ 학적→복수전공관리→복수전공신청등록)<br>
+                                      4. 전공별 선발 가능 인원: 제한 없음 (단, 아래의 경우는 신청 불가)<br>
+                                      ※ 글로벌무역학전공, 연극학부, 스포츠문화학과, 약학과, 미술학부 불교미술전공, 한국화전공으로 복수전공 불가<br>
+                                      ※ 미래융합대학 소속 학과 복수전공의 경우 소속 학과 간 복수전공 및 타 단과대학으로의 복수전공 이수는<br>
+                                      허가할 수 있으나, 타 단과대학에서 미래융합대학 소속 학과로의 복수전공 이수는 허가할 수 없음.<br>
+                                      5. 복수(연계)전공 합격 발표: 2021. 7. 14.(수) 예정 - uDRIMS 개별 조회</div>
+              <div class="post_link_title">참고 링크</div>
+              <div class="post_link"><a href="http://www.dongguk.edu/mbs/kr/jsp/board/view.jsp?spage=2&boardId=3638&boardSeq=26735971&id=kr_010801000000&column=&search=&categoryDepth=&mcategoryId=0">2021학년도 2학기 복수(연계)전공 신청</a></div>
+            </div>
+          </div>   
         </div>
-          
-            
+        
         <!----------------------------------------Footer--------------------------------------------->
         <div data-role="footer">
           <p class="bottom">서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
@@ -38,7 +86,6 @@
             E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760
           </p>
         </div>
-
       </div>
     </body>
 </html>
