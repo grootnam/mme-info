@@ -1,30 +1,3 @@
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
 
-body{
-    width: 100%;
-    height: 100%;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-}
-div{
-    margin: 0 0 0 0;
-}
-nav a{
-    color: black;
-}
 
-.main-up{
-    padding-top: 40%;
-}
 
-#header_title:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
-
-#page_About:hover{
-    background-color: #ACDEE7;
-}
-#page_Project:hover{
-    background-color: #FFE699;
-}
-#page_QA:hover{
-    background-color: #C3D9C2;
-}
