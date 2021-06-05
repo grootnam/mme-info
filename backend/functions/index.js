@@ -1,2 +1,2 @@
-exports.triggers = require('./triggers');
+//exports.triggers = require('./triggers');
 exports.apis=require('./apis')
