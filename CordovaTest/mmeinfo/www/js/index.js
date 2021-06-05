@@ -1,3 +1,6 @@
+const firebaseWebPushKey= "BPp9X_8OLhv6eyggatx5GXea65keYx9vzX65m8T8q6fftvChYJ_okyTMBW58AzDqnhoMjvkhyDn57k82QL_-Udo"
+
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,6 +20,8 @@
  * under the License.
  */
 
+//const FCM = require("cordova-plugin-fcm-with-dependecy-updated")
+
 //const { default: FCM } = require("cordova-plugin-fcm-with-dependecy-updated");
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
@@ -29,23 +34,36 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+    //document.getElementById('deviceready').classList.add('ready');
 
     console.log(FCM)
 
-    FCM.getToken().then((token)=>{
-        console.log("token :"+ token)
-		alert("token : "+ token);
+    FCM.getToken({vapidKey : firebaseWebPushKey }).then((token)=>{
+      console.log("token :"+ token)
+		  alert("token : "+ token);
+      fetch("https://us-central1-mme-info.cloudfunctions.net/apis-sendToken",{
+        "method" : "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body" : JSON.stringify({
+          "token" : token
+        })
+      }).then((response) =>{
+        console.log('get response ', response)
+        alert("get response : " + response.body)
+        FCM.subscribeToTopic("event")
+      })
     })
-	FCM.getToken(
-	  function(token){
-		console.log("token :"+ token)
-		alert("token : "+ token);
-	  },
-	  function(err){
-		console.log('error retrieving token: ' + err);
-	  }
-	)
+	// FCM.getToken(
+	//   function(token){
+	// 	console.log("token :"+ token)
+	// 	alert("token : "+ token);
+	//   },
+	//   function(err){
+	// 	console.log('error retrieving token: ' + err);
+	//   }
+	// )
 
 	FCM.onNotification(
 	  function(data){

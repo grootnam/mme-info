@@ -1,0 +1,14 @@
+{
+  "name": "mme-info",
+  "version": "1.0.0",
+  "description": "mulgong",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^8.6.5"
+  }
+}

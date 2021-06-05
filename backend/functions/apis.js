@@ -1,6 +1,80 @@
 const functions = require("firebase-functions");
+const admin =require("firebase-admin")
 const db = require("./adminInit").db;
 const cors = require("cors")({ origin: true });
+
+const msgTopic = "event"
+
+exports.sendMessageStringOnly = functions.https.onRequest((request, response) =>{
+  return cors(request, response, ()=>{
+    console.log('get sendmsg request body : ',request.body)
+    var msg = 'msgtest '+ String(request.body["message"])
+    console.log('msg to send : ',msg)
+    // var message = {
+    //   data: {
+    //     message : msg
+    //   },
+    //   topic : msgTopic
+    // }
+    var message = {
+      "topic": msgTopic,
+      "notification": {
+        "title": "Background Message Title",
+        "body": "Background message body"
+      },
+      "webpush": {
+        "fcm_options": {
+          "link": "https://dummypage.com"
+        }
+      },
+      data: {
+        message : msg
+      }
+    }
+    return admin.messaging().send(message).then((response2) => {
+        // Response is a message ID string.
+        console.log('Successfully sent message:', response2);
+      }, (reason)=>{
+        console.log('sent message failed:', reason);
+      })
+      .catch((error) => {
+        console.log('Error sending message:', error);
+      });
+  })
+})
+
+exports.sendToken=functions.https.onRequest((request, response)=>{
+  cors(request,response,()=>{
+    var body = request.body
+    console.log("get token from phone: ", body["token"]);
+    var token = body["token"]
+    var tokenRef=db.collection('tokens');
+    return tokenRef.where("token", "==", token).get().then((snap)=>{
+      if(snap.size<=0){
+        return tokenRef.doc().set({
+          token : body.token
+        }).then((result)=>{
+          admin.messaging().subscribeToTopic(token, msgTopic).then((res)=>{
+            console.log('Successfully subscribed to topic:', res)
+          }).catch((err)=>{
+            console.log('error subscribing to topic',err)
+          })
+          response.status(200).send({
+            success: true,
+          });
+        }, (reason)=>{
+          response.status(405).send(reason);
+        })
+      }
+      else{
+        console.log('token ',token, ' is already added')
+        response.status(200).send({
+          success: true,
+        });
+      }
+    })
+  });
+});
 
 exports.postQna = functions.https.onRequest((request, response) => {
   cors(request, response, () => {
@@ -345,6 +419,8 @@ exports.getNoticesByIndexs = functions.https.onRequest((request, response) => {
     });
   });
 });
+
+
 
 function GetCurrentQnasHighestIndex() {
   var getCurrentMetadataPromise = db.doc("metadata/PpmSaO7W089QJuMBY9Md").get();

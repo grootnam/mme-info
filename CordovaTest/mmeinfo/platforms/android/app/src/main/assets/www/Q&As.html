@@ -23,10 +23,10 @@
         <div data-role="content">
           <div class="container">
             <div class="bar gray">
-                <button class="bar-item button tablink fontB font_size gray_clicked" onclick="openMenu(event,'All'); makePage()">전체</button>
-                <button class="bar-item button tablink fontB" onclick= "openMenu(event,'Class'); makeCertainPage('class');">수업</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Career'); makeCertainPage('career');">진로</button>
-                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Etc'); makeCertainPage('etc');">기타</button>
+                <button class="bar-item button tablink fontB font_size gray_clicked" onclick="openMenu(event,'All')">전체</button>
+                <button class="bar-item button tablink fontB" onclick= "openMenu(event,'Class'); sort('content_class')">수업</button>
+                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Career'); sort('content_career');">진로</button>
+                <button class="bar-item button tablink fontB" onclick="openMenu(event,'Etc'); sort('content_etc');">기타</button>
             </div>
             <!--------------------------------------All--------------------------------------->                   
             <div id="All" class="menu">
@@ -37,7 +37,7 @@
               </div>
 
               <div id = "content_container">
-                <!-- <span class ="content_etc">
+                <span class ="content_etc">
                   <div class ="content_head fontB">Q</div>
                   <a class="content_tail" href="#">컴공이랑 우리과랑 다른점</a>
                 </span>
@@ -85,7 +85,7 @@
                 <span class="content_class">  
                   <div class="content_head fontB">Q</div>
                   <a class="content_tail" href="#">멀티미디어객체지향 수업 보강 언제하나요?</a>
-                </span> -->
+                </span>
               </div>
             </div>
 
