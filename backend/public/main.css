@@ -1,0 +1,198 @@
+/* 스타일 초기화 */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+header,
+body,
+footer {
+  font-size: 14px;
+  font-family: 나눔고딕, 굴림, 돋음, "Times New Roman", serif;
+  width: 100%;
+}
+
+p{
+    line-height: 150%;
+}
+
+.link_icon{
+    height: 25px;
+}
+ul li{
+    margin-left: 20px;
+}
+nav ul li {list-style-type: none;}
+aside ul li {list-style-type: none;}
+footer {
+  text-align: center;
+}
+
+header{
+    text-align: left;
+}
+body {
+  margin: auto;
+  background: radial-gradient(rgb(231, 231, 253),white);
+}
+footer {
+  position: fixed;
+  bottom: 0px;
+}
+
+header h1
+{
+    padding: 15px;
+    font-size: 30px;
+    color: white;
+    text-shadow: white;
+  background: linear-gradient(0, lightcyan, cyan);
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  box-shadow: 1px 1px 1px 1px cyan;
+  background: linear-gradient(0, rgb(37, 204, 204), rgb(2,78,78));
+  font-family: 'Courier New', Courier, monospace;
+}
+
+footer h2{
+    background: linear-gradient(0, black, rgb(1, 19, 19));
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    box-shadow: cyan;
+    font-size: 15px;
+  color: white;
+}
+
+img{
+    max-width: 300px;
+    max-height: 200px;
+}
+
+nav {
+    background: radial-gradient(rgb(81, 81, 128),rgb(29, 79, 219));;
+  margin: 5px 0px;
+}
+
+nav ul{
+    background: gray;
+    padding: 3px;
+}
+nav  ul  li {
+  font-style: bold;
+  margin: 1px;
+  padding: 0px;
+  border: 2px solid rgb(0, 90, 194);
+  background: rgb(9, 0, 63);
+  text-align: center;
+}
+
+nav  ul  li  a{
+    color: white;
+    text-decoration: none;
+}
+nav  ul  li:hover {
+  background: blue;
+  color: white;
+}
+
+nav  ul  .current{
+    background: blue;
+    color: white;
+}
+
+aside ul li{
+    display: inline;
+    margin: 0px 5px;
+}
+
+.hidden{
+    display: none;
+}
+
+.container h2{
+    text-shadow: 3px 3px 3px lightblue;
+    margin: 3px;
+}
+
+
+.container h3{
+    text-shadow: 3px 3px 3px rgb(176, 176, 255);
+    margin: 10px 3px 3px 10px;
+}
+
+.container .card{
+    border: 2px 2px 2px 2px #e4f2d0;
+    box-shadow: 2px 0px 2px 2px blue;
+    margin: 0px 0px 0px 30px;
+}
+
+.container .red{
+    box-shadow: 2px 0px 2px 2px rgb(241, 84, 84);
+}
+
+.portfoliogame{
+    font-size: 20px;
+}
+@media only screen and (orientation: landscape) {
+  section {
+    width: 80%;
+    float: left;
+  }
+  aside {
+    width: 100px;
+    height: 10%;
+    text-align: center;
+    float: right;
+    position: fixed;
+    right: 0;
+    bottom: 30px;
+    background: whitesmoke;
+  }
+  nav{
+      position: fixed;
+      right: 0;
+      width: 100px;
+      height: 100%;
+  }
+  footer {
+    clear: both;
+  }
+
+  .container{
+    
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    padding: 3%;
+    }
+
+}
+
+@media only screen and (orientation: portrait){
+    nav{
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    aside{
+        position: fixed;
+        bottom: 40px;
+        height: 30px;
+        text-align: center;
+        width: 100%;
+        background: whitesmoke;
+    }
+    nav ul li{
+        display: inline;
+    }
+
+    .container{
+        border: 1px solid black;
+        padding: 2%;
+    }
+    
+}
+.content {
+  clear: both;
+}
+
+

@@ -1,48 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MME INFO 답변달아주기</title>
-    <script>
-      function clickBtn(){
-        var msgbox = document.getElementById('msg')
-        var msg=msgbox.value
-        fetch("https://us-central1-mme-info.cloudfunctions.net/apis-sendMessageStringOnly",{
-          "method" : "POST",
-          "mode": "no-cors", 
-          "cache": "no-cache", 
-          "credentials": "same-origin", 
-          "headers": {
-            "Content-Type": "application/json"
-          },
-          "body" : JSON.stringify({
-            "message" : msg
-          })
-        }).then((response)=> response.text()).then((resptext) =>{
-          console.log('get response ', resptext)
-          alert("get response : ", resptext)
-        })
-      }
-      // fetch("https://us-central1-mme-info.cloudfunctions.net/apis-getWorksById?id=0").then((resposne)=>resposne.json()).then((datas)=>{
-      //   var ndiv = document.createElement('div');
+    <meta charset="utf-8" />
+    <title>MMESEUM Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <header>
+        <h1>MMESEUM Admin Page</h1>
+    </header>
+    <nav>
+        <ul>
+            <li class="index current" ><a href="index.html">푸시 및 일정</a></li>
+            <li class="info"><a href="notice.html">공지사항</a></li>
+            <li class="career"><a href="etc.html">기타</a></li>
+        </ul>
+    </nav>
+    <section>
+        <article>
+            <div class="container">
+               
+            </div>
+        </article>
+    </section>
+    <aside>
+       
+    </aside>
 
-      //   datas.forEach(data => {
-      //     var nH1=document.createElement('h1');
-      //     nH1.innerHTML=String(data)
-      //     ndiv.appendChild(nH1)  
-      //   });
-
-      //   var cur=document.getElementById("container");
-      //   cur.appendChild(ndiv)
-      // })
-    </script>
-   
-  </head>
-  <body>
-    <div id="container">
-      <input id="msg" type="text">
-      <button id="sendBtn"  onclick="clickBtn()">send</button>
-    </div>
-  </body>
+    <footer>
+        <h2>Copyright &copy; 2021 MME </h2>
+    </footer>
+</body>
 </html>
