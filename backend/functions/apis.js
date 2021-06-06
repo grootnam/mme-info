@@ -146,8 +146,7 @@ exports.postData =  functions.https.onRequest((request, response) => {
 
 exports.editData = functions.https.onRequest((request, response) => {
   return cors(request, response, () => {
-    var body = request.body;
-    var data=body.data;
+    var body = JSON.parse(String(request.body))
     var collectionName="";
 
     if(body.type == 'qna'){
@@ -165,12 +164,14 @@ exports.editData = functions.https.onRequest((request, response) => {
       });
     }
 
-    var index = Number(data.index);
+    var index = Number(body.index);
+
+    console.log('final index ',index, 'final collectionName ',collectionName)
 
     var noticesref = db.collection(collectionName);
     var query = noticesref.where("index", "==", index);
     return query.get().then((snap) => {
-      snap.docs[0].ref.set(data.newData, { merge: true }).then(
+      snap.docs[0].ref.set(body.data, { merge: true }).then(
         (snap2) => {
           response.status(200).send({
             success: true,
