@@ -35,10 +35,18 @@ exports.sendMessageStringOnly = functions.https.onRequest((request, response) =>
     return admin.messaging().send(message).then((response2) => {
         // Response is a message ID string.
         //console.log('Successfully sent message:', response2);
+        response.status(200).send({
+          success: true,
+        });
+        return
       }, (reason)=>{
+        response.status(405).send(reason);
+        return
         //console.log('sent message failed:', reason);
       })
       .catch((error) => {
+        response.status(405).send(error);
+        return
         //console.log('Error sending message:', error);
       });
   })

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <title>Notice</title>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
+        <link rel="stylesheet" href="Notice.css">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" href="../Resources/JQuery/overall.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="Notice.js"></script>
+        <style>
+          @media (max-width: 1000px) {
+              body{
+                  font-size: 0.5em;
+              }
+              .main-up {
+                  padding-top: 35%;
+              }
+              .comment_head, .comment_tail{
+                font-size: auto;
+              }
+          }
+          @media (min-width: 1001px) {
+              .main-up {
+                  padding-top: 13%
+              }
+              #menu{
+                  width: 40%
+              }
+              .comment_head, .comment_tail{
+                font-size: 1.2em;
+              }
+          }
+        </style>
+    </head>
+
+    <body>
+      <div data-role="page">
+        <!----------------------------------근남 부분------------------------------------->
+         <!----------------------------------근남 부분------------------------------------->
+         <div data-role="header" id="header" style="height: 8em;width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white;">
+          <div id="header_backbutton" style="width: 27%; height: 100%; overflow: hidden; position: relative; padding-left: 1em;display: inline-block;text-align: left;">
+              <a style="vertical-align: middle;" onclick="$.mobile.back();"><img height="25em" src="../Resources/header_Menu_Image/back_img.png"></a>
+          </div><div id="header_menu" style="width: 70%; height: 100%; right: 0;overflow: hidden; position: relative; display: inline-block;">
+              <button id="showRightMenuOpen" class="ui-btn"alt="menu" onclick="activeNav()" style="padding: 0 0 0 0;position: fixed ;border-style: none; background-color: white;">
+                  <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
+              </button>
+              <script type="text/javascript">
+                  function activeNav(){ 
+                      var m_menu = document.getElementById("menu");
+                      var m_header = document.getElementById("header")
+                      var m_body = document.getElementsByTagName("body");
+                      if(m_menu.style.display =='none'){
+                          m_menu.style.display = 'inline-block';
+                          m_header.style.backgroundColor="#E8E8E8";
+                          m_body[0].style.backgroundColor = "#E8E8E8";
+                          m_body[0].style.opacity= "1"
+                      }else{
+                          m_menu.style.display = 'none';
+                          m_header.style.backgroundColor="#FFFFFF";
+                          m_body[0].style.backgroundColor = "#FFFFFF";
+                          m_body[0].style.opacity= "1"
+                      }
+                  }
+              </script>
+          </div>
+      </div>
+      
+      <div id="menu" style="height: 100%; background: white ; display: none; position: fixed; float: right; right: 0px; z-index: 100; list-style: none;">
+          <div style="display: inline-block; width:100%; height: 8em; margin:  0 0 0 0;text-align: right;">
+              <button id="showRightMenuClose" class="ui-btn" alt="menu"  onclick="activeNav()" style="display: inline-block; width: 7em;height: 7em;padding: 0 0 0 0; border-style: none; background-color: white;">
+                  <img src="../Resources/header_Menu_Image/close_menulist.png" id="Menu_Close_img" height="50em" style="">
+              </button>
+          </div>
+          
+          <ul data-role="none" id="menu-list" style="list-style:none; font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
+              <li id="page_Notice">
+                  <a href="../Notices/Notices.html">NOTICE.</a>
+              </li>
+              <li id="page_Calendar">
+                  <a href="">CALENDAR.</a>
+              </li>
+              <li id="page_QA">
+                  <a href="../Q&As/Q&As.html">Q&A.</a>
+              </li>
+          </ul>
+      </div>
+      <style> 
+          #header_backbutton:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
+          #menu-list a{
+              color: black;
+              text-decoration: none;
+          }
+          #menu-list a:link{
+              color: black;
+              text-decoration: none;
+          }
+          #menu-list a:visited { color: black; text-decoration: none;}
+          #menu-list li{
+              text-align: left
+          }
+          #page_Notice:hover{
+          background-color: #ACDEE7;
+          color: white;
+          }
+          #page_Calendar:hover{
+          background-color: #FFE699;
+          color: white;
+          }
+          #page_QA:hover{
+          background-color: #C3D9C2;
+          color: white;
+          }
+          @media (max-width: 1000px) {
+              #menu{
+                  width: 65%
+              }
+              #header{
+                  height: 10%;
+              }
+              #showRightMenuOpen{
+                  top: 0.5% ;right: 0.5%
+              }
+              #showRightMenuClose{
+                  top: 0.5% ;right: 0.5%
+              }
+          }
+          @media (min-width: 1001px) {
+              #menu{
+                  width: 40%
+              }
+              #header{
+                  height: 15%;
+              }
+              #showRightMenuOpen{
+                  top: 3% ;right: 3%
+              }
+              #showRightMenuClose{
+                  top: 3% ;right: 3%
+              }
+          }
+      </style>
+      <!-----------------------------여기까지 근남----------------------------->
+      
+          <p style="background-color: #F0B1C2; 
+                    padding-top: 4em;
+                    margin: 0 0 0 0;
+                    font-family: 'fontB';
+                    font-size: 5em;
+                    padding-bottom: 3%;
+                    padding-left: 10%;
+                    color: white;
+                    ">NOTICE.</p>                                 
+        <!--------------------------------------Content-------------------------------------->
+        <div data-role="content" style="margin-bottom: 2em;
+                                        margin-bottom: 4em;">
+                    
+          <div class="container" style= "width: 70%;
+                                        margin: 0 auto 0;">
+            <p class="post_title">2021학년도 2학기 복수(연계) 전공</p>
+            <div class="post_expl">1. 신청 대상: 2021학년도 1학기 현재, 2학기 이상 재학생(휴학생 신청불가)<br>(편입생: 편입한 학기부터 신청 가능)<br>
+                                    2. 신청 기간: 2021. 6. 1.(화) 10:00 ~ 6. 4.(금) 23:59<br> 
+                                    3. 신청 방법: uDRIMS 신청<br>
+                                    (경로: uDRIMS 학사정보→ 학적→복수전공관리→복수전공신청등록)<br>
+                                    4. 전공별 선발 가능 인원: 제한 없음 (단, 아래의 경우는 신청 불가)<br>
+                                    ※ 글로벌무역학전공, 연극학부, 스포츠문화학과, 약학과, 미술학부 불교미술전공, 한국화전공으로 복수전공 불가<br>
+                                    ※ 미래융합대학 소속 학과 복수전공의 경우 소속 학과 간 복수전공 및 타 단과대학으로의 복수전공 이수는<br>
+                                    허가할 수 있으나, 타 단과대학에서 미래융합대학 소속 학과로의 복수전공 이수는 허가할 수 없음.<br>
+                                    5. 복수(연계)전공 합격 발표: 2021. 7. 14.(수) 예정 - uDRIMS 개별 조회1. 신청 대상: 2021학년도 1학기 현재, 2학기 이상 재학생(휴학생 신청불가)<br>(편입생: 편입한 학기부터 신청 가능)<br>
+                                    2. 신청 기간: 2021. 6. 1.(화) 10:00 ~ 6. 4.(금) 23:59<br> 
+                                    3. 신청 방법: uDRIMS 신청<br>
+                                    (경로: uDRIMS 학사정보→ 학적→복수전공관리→복수전공신청등록)<br>
+                                    4. 전공별 선발 가능 인원: 제한 없음 (단, 아래의 경우는 신청 불가)<br>
+                                    ※ 글로벌무역학전공, 연극학부, 스포츠문화학과, 약학과, 미술학부 불교미술전공, 한국화전공으로 복수전공 불가<br>
+                                    ※ 미래융합대학 소속 학과 복수전공의 경우 소속 학과 간 복수전공 및 타 단과대학으로의 복수전공 이수는<br>
+                                    허가할 수 있으나, 타 단과대학에서 미래융합대학 소속 학과로의 복수전공 이수는 허가할 수 없음.<br>
+                                    5. 복수(연계)전공 합격 발표: 2021. 7. 14.(수) 예정 - uDRIMS 개별 조회s</div>
+            <div class="post_link_title">참고 링크</div>
+            <div class="post_link"><a href="http://www.dongguk.edu/mbs/kr/jsp/board/view.jsp?spage=2&boardId=3638&boardSeq=26735971&id=kr_010801000000&column=&search=&categoryDepth=&mcategoryId=0">2021학년도 2학기 복수(연계)전공 신청</a></div>
+          </div>   
+        </div>
+        
+        <!----------------------------------------Footer--------------------------------------------->
+        <div data-role="footer">
+        </div>
+      </div>
+    </body>
+</html>

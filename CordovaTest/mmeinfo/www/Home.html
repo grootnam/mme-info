@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="css/header_menu.css" type="text/css" rel="stylesheet">
     <!-- 반응형 -->
     <style>
+        @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
         @media (max-width: 1000px) {
             body{
                 font-size: 0.5em;
@@ -26,21 +27,33 @@
                 width: 40%
             }
         }
-
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+        }
+        div{
+            margin: 0 0 0 0;
+        }
+        .main-up{
+            padding-top: 40%;
+        }
+        
         body > div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default{
             display: none;
         }
+
     </style>
 </head>
 <body style="font-family: 'NanumSquare', sans-serif;">
     <div data-role="page" id="Home" style="width: 100%; height: 100%;">
-    <div data-role="header" id="header" style="width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white;">
-        <div id="header_title" style="width: 27%; height: 100%; overflow: hidden; position: relative; display: inline-block; padding-left: 3%;">
-            <img id="header_title_image" style="src:url();height: 50%; display: inline-block; vertical-align: middle;">
-            <!-- <img id="header_title_image" src="../Resources/header_Menu_Image/pageTitle.png" style="src:url();height: 50%; display: inline-block; vertical-align: middle;"> -->
+    <div data-role="header" id="header" style="height: 8em;width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white;">
+        <div id="header_backbutton" style="width: 27%; height: 100%; overflow: hidden; position: relative; display: inline-block;">
+            <!-- <a style="vertical-align: middle;" onclick="$.mobile.back();"><img height="30em" src="Resources/header_Menu_Image/back_img.png"></a> -->
         </div><div id="header_menu" style="width: 70%; height: 100%; right: 0;overflow: hidden; position: relative; display: inline-block;">
-            <button id="showRightMenuOpen" alt="menu" onclick="activeNav()" style="position: fixed ;border-style: none; background-color: white;">
-                <img src="Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="70em">
+            <button id="showRightMenuOpen" class="ui-btn"alt="menu" onclick="activeNav()" style="padding: 0 0 0 0;position: fixed ;border-style: none; background-color: white;">
+                <img src="Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
             </button>
             <script type="text/javascript">
                 function activeNav(){ 
@@ -48,7 +61,7 @@
                     var m_header = document.getElementById("header")
                     var m_body = document.getElementsByTagName("body");
                     if(m_menu.style.display =='none'){
-                        m_menu.style.display = 'block';
+                        m_menu.style.display = 'inline-block';
                         m_header.style.backgroundColor="#E8E8E8";
                         m_body[0].style.backgroundColor = "#E8E8E8";
                         m_body[0].style.opacity= "1"
@@ -62,7 +75,50 @@
             </script>
         </div>
     </div>
-    <style>
+    
+    <div id="menu" style="height: 100%; background: white ; display: none; position: fixed; float: right; right: 0px; z-index: 100; list-style: none;">
+        <div style="display: inline-block; width:100%; height: 8em; margin:  0 0 0 0;text-align: right;">
+            <button id="showRightMenuClose" class="ui-btn" alt="menu"  onclick="activeNav()" style="display: inline-block; width:3.5em;height: 3.5em;padding: 0 0 0 0; border-style: none; background-color: white;">
+                <img src="Resources/header_Menu_Image/close_menulist.png" id="Menu_Close_img" height="50em" style="">
+            </button>
+        </div>
+        
+        <ul data-role="none" id="menu-list" style="list-style:none; font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
+            <li id="page_Notice" >
+                <a href="Notices/Notices.html">NOTICE.</a>
+            </li>
+            <li id="page_Calendar">
+                <a href="/">CALENDAR.</a>
+            </li>
+            <li id="page_QA">
+                <a href="Q&As/Q&As.html">Q&A.</a>
+            </li>
+        </ul>
+    </div>
+    <style> 
+        #header_backbutton:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
+        #menu-list a{
+            color: black;
+            text-decoration: none;
+        }
+        #menu-list a:link{
+            color: black;
+            text-decoration: none;
+        }
+        #menu-list a:visited { color: black; text-decoration: none;}
+
+        #page_Notice:hover{
+        background-color: #ACDEE7;
+        color: white;
+        }
+        #page_Calendar:hover{
+        background-color: #FFE699;
+        color: white;
+        }
+        #page_QA:hover{
+        background-color: #C3D9C2;
+        color: white;
+        }
         @media (max-width: 1000px) {
             #menu{
                 width: 65%
@@ -92,26 +148,6 @@
             }
         }
     </style>
-    <div data-role="navbar" id="menu" style="height: 100%; background: white ; display: none; position: fixed; float: right; right: 0px; z-index: 100; list-style: none;">
-        <div style="width:100%; height: 10%;">
-            <button id="showRightMenuClose" alt="menu" onclick="activeNav()" style="position: fixed; border-style: none; background-color: white;">
-                <img src="Resources/header_Menu_Image/close_menulist.png" id="Menu_Close_img" width="70em">
-            </button>
-        </div>
-        
-        <ul class="menu-list" style="font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
-            <li id="page_About">
-                <a href="Notices.html"><p>NOTICE.</p></a>
-            </li>
-            <li id="page_Project">
-                <a href=""><p>CALENDAR.</p></a>
-            </li>
-            <li id="page_QA">
-                <a href="Q&As.html"><p>Q&A.</p></a>
-            </li>
-        </ul>
-    </div>
-
 
     <div data-role="main" class="main-up" style="width:100%; height:100%; text-align: center; color: #7F7F7F;">
         <div class="hometitle">
@@ -220,7 +256,7 @@
                     <p><h2>gudwn_hack@gmail.com</h2></p>
                 </div>
                 <div class="intro-right" style="width: 45%; text-align: right;display: inline-block;">
-                    <!-- <img src="../Resources/Home/ryu.jpg" style="height: 20em;"> -->
+                    <!-- <img src="Resources/Home/ryu.jpg" style="height: 20em;"> -->
                 </div>
 
             </div>
@@ -230,10 +266,10 @@
 
 
 
-    <div data-role="footer" style="bottom:0px;width: 100%; height: 10%;text-align: end; background-color: #F2F2F2 ;  color:#7F7F7F ;">
-        <p><h5>서울특별시 중구 필동로 1길 30, 신공학관 4층</h5>
+    <div data-role="footer" style="bottom:0px;width: 100%; height: 10%;text-align: right; background-color: #F2F2F2 ;  color:#7F7F7F ;">
+        <h5>서울특별시 중구 필동로 1길 30, 신공학관 4층</h5>
         <h5>동국대학교 멀티미디어공학과</h5>
-        <h5>E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760</h5></p>
+        <h5>E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760</h5>
     </div>
 </div>
 <script src="cordova.js"></script>
