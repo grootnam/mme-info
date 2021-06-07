@@ -14,7 +14,7 @@ function clickBtnSendMessage(){
       })
     }).then((response)=> response.json()).then((respjson) =>{
       console.log('get response ', respjson)
-      alert("get response : ", respjson)
+      //alert("get response : ", respjson)
     })
   }
 
@@ -124,5 +124,38 @@ function changeScheduleMode(element){
     }, (reason)=>{
         console.log('get response json failed ', reason)
         clickBtnSearch()
+    })
+}
+
+function clickBtnWriteNotice(){
+  var title=document.getElementById('title').value
+  var category=document.getElementById('category').value
+  var content=document.getElementById('content').value
+  var link=document.getElementById('link').value
+
+  if(link == undefined){
+    link=""
+  }
+
+  fetch("https://us-central1-mme-info.cloudfunctions.net/apis-postData",{
+      "method" : "POST",
+      "mode": "no-cors", 
+      "cache": "no-cache", 
+      "credentials": "same-origin", 
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body" : JSON.stringify({
+        "type" : "notice",
+        "data" : {
+          "title" : title,
+          "category" : category,
+          "content" : content,
+          "link" : link
+        }
+      })
+    }).then((response)=> response.json()).then((respjson) =>{
+      console.log('get response ', respjson)
+      //alert("get response : ", respjson)
     })
 }

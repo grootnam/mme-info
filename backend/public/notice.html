@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>MMESEUM Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="index.js"></script>
+</head>
+<body>
+    <header>
+        <h1>MMESEUM Admin Page</h1>
+    </header>
+    <nav>
+        <ul>
+            <li class="index" ><a href="index.html">푸시 및 일정</a></li>
+            <li class="notice current"><a href="notice.html">공지사항</a></li>
+            <!-- <li class="career"><a href="etc.html">기타</a></li> -->
+        </ul>
+    </nav>
+    <section>
+        <article>
+            <div class="container">
+               <div class="card">
+                    <h3>공지사항 등록</h3>
+                    제목 : 
+                    <input type="text" id="title" ><br>
+                    카테고리 : 
+                    <input type="text" id="category" ><br>
+                    내용 : 
+                    <textarea id="content" ></textarea><br>
+                    추가 정보 링크:
+                    <input type="text" id="link" ><br>
+                    <button id="btnWrite" onclick="clickBtnWriteNotice()">등록</button>
+               </div>
+            </div>
+        </article>
+    </section>
+    <aside>
+       
+    </aside>
+
+    <footer>
+        <h2>Copyright &copy; 2021 MME </h2>
+    </footer>
+</body>
+</html>
