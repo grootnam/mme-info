@@ -1,35 +1,3 @@
-// notices = [
-//   {
-//       type : "campus",
-//       title : "2021학년도 2학기 복수(연계) 전공 신청",
-//       index : 2232
-//   },
-//   {
-//       type : "engineering",
-//       title : "공과대학 캡스톤 디자인 대회",
-//       index : 223232
-//   },
-//   {
-//       type : "office",
-//       title : "졸업 이수 학점 안내",
-//       index : 213122
-//   },
-//   {
-//       type : "student",
-//       title : "사물함 신청 날짜",
-//       index : 21322
-//   },
-//   {
-//       type : "campus",
-//       title : "졸업 사진 촬영 안내",
-//       index : 132232
-//   },    {
-//       type : "engineering",
-//       title : "공과대학 MSC 공학인증 학점 변경 안내",
-//       index : 12232
-//   }
-// ]
-
 notices = [];
 
 window.onload = makePage;

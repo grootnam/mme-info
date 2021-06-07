@@ -66,7 +66,7 @@ exports.sendMessageDailyForce = functions.https.onRequest(
         .where("start", "<=", nextYmd)
         .get()
         .then((snap) => {
-          console.log("get data : length", snap.docs.length);
+          //console.log("get data : length", snap.docs.length);
           if (snap.docs.length <= 0) {
             response.status(200).send({
               success: true,
@@ -236,14 +236,9 @@ exports.sendToken = functions.https.onRequest((request, response) => {
 
 exports.postData = functions.https.onRequest((request, response) => {
   return cors(request, response, () => {
-    // var body = request.body;
-    // console.log('postData get body : ',body)
-    // response.set('Access-Control-Allow-Origin', "*")
     var body = JSON.parse(String(request.body));
     var indexName = "";
     var collectionName = "";
-
-    //console.log('postdata get body type : ' + body["type"])
 
     if (body["type"] == "qna") {
       indexName = "qna_last_index";
@@ -257,15 +252,15 @@ exports.postData = functions.https.onRequest((request, response) => {
       var data = body["data"];
       var orgStart = data["start"];
       var orgEnd = data["end"];
-      //console.log('org start and end: ',orgStart,orgEnd)
       var dStart = new Date(orgStart);
       var dEnd = new Date(orgEnd);
-      //console.log('dt start and end: ',dStart,dEnd)
       data["start"] = firestore.Timestamp.fromDate(dStart);
       data["end"] = firestore.Timestamp.fromDate(dEnd);
-
-      // console.log('altered body : ',body)
-    } else {
+    } else if(body["type"] == "comment"){
+      indexName="comment_last_index";
+      collectionName="comments"
+    }
+    else {
       response.status(405).send({
         message: "write data type ! ",
       });
@@ -323,7 +318,7 @@ exports.editData = functions.https.onRequest((request, response) => {
 
     var index = Number(body.index);
 
-    console.log("final index ", index, "final collectionName ", collectionName);
+    //console.log("final index ", index, "final collectionName ", collectionName);
 
     var noticesref = db.collection(collectionName);
     var query = noticesref.where("index", "==", index);
@@ -474,14 +469,45 @@ exports.getSchedulesByMonth = functions.https.onRequest((request, response) => {
 
     var fromMonth = new Date(year, month - 1);
     var toMonth = new Date(year, month);
-    console.log("fromMonth: ", fromMonth, "toMonth: ", toMonth);
-    // toMonth.setDate(fromMonth.getDate() + 31)
     return qnasRef
       .where("start", ">=", fromMonth)
       .where("start", "<=", toMonth)
       .get()
       .then(
         (snap) => {
+          response.status(200).send(snap.docs.map((doc) => doc.data()));
+        },
+        (reason) => {
+          response.status(404).send(reason);
+        }
+      );
+  });
+});
+
+exports.getCommentsByTypeAndIndex=functions.https.onRequest((request, response) => {
+  cors(request, response, () => {
+    var type = request.query.type
+    var index=Number(request.query.index)
+   
+    var collectionName = "comments";
+    var qnasRef = db.collection(collectionName);
+
+    if (type.length<=0) {
+      response.status(405).send({
+        message: "no type for comment ! ",
+      });
+      return;
+    }
+
+    //console.log('type : ', type, 'index : ',index)
+
+    return qnasRef
+      .where("comment_index", "==", index)
+      .where("comment_type", "==", type)
+      .get()
+      .then(
+        (snap) => {
+          //console.log('get snaps: ', snap.docs.length)
           response.status(200).send(snap.docs.map((doc) => doc.data()));
         },
         (reason) => {
