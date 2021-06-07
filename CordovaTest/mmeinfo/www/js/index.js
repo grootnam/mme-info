@@ -40,7 +40,7 @@ function onDeviceReady() {
 
     FCM.getToken({vapidKey : firebaseWebPushKey }).then((token)=>{
       console.log("token :"+ token)
-		  alert("token : "+ token);
+		  //alert("token : "+ token);
       fetch("https://us-central1-mme-info.cloudfunctions.net/apis-sendToken",{
         "method" : "POST",
         "headers": {

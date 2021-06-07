@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <head>
         <title>Notice</title>
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
         <link rel="stylesheet" href="Notice.css">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         <link rel="stylesheet" href="../Resources/JQuery/overall.min.css" />
@@ -12,6 +12,11 @@
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="Notice.js"></script>
+        <script>
+            $(document).delegate('.ui-page', 'pageshow', function () {
+                makeNoticePage()
+            });
+        </script>
         <style>
           @media (max-width: 1000px) {
               body{

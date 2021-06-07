@@ -1,7 +1,5 @@
 // window.onload=makeNoticePage()
-$(document).delegate('.ui-page', 'pageshow', function () {
-    makeNoticePage()
-});
+
  function makeNoticePage(){
      var cur=localStorage.getItem("selectedNotice")
      if(cur.length<=0){
