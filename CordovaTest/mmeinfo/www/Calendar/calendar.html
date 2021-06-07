@@ -147,31 +147,32 @@
         <!-- 1. CALENDAR-->
             <div id="color-calendar" style="width:100%;"></div>
             <script>
+                var isChanging=false;
                 let myCal = new Calendar({
                     theme: 'glass',
-                    eventsData: [
-                        {
-                            start: '2021-06-11T06:00:00',
-                            end: '2021-06-11T20:30:00',
-                            name: '류형주 생일'
-                        },
-                        {
-                            start: '2021-06-11T06:00:00',
-                            end: '2021-06-11T20:30:00',
-                            name: '모바일웹프로그래밍 발표'
-                        },
-                        {
-                            start: '2021-06-09T06:00:00',
-                            end: '2021-06-09T20:30:00',
-                            name: '로봇비전시스템 기말고사'
-                        },
-                        {
-                            start: '2021-06-16T06:00:00',
-                            end: '2021-06-16T20:30:00',
-                            name: '종합설계 최종발표'
-                        }
+                    // eventsData: [
+                    //     {
+                    //         start: '2021-06-11T06:00:00',
+                    //         end: '2021-06-11T20:30:00',
+                    //         name: '류형주 생일'
+                    //     },
+                    //     {
+                    //         start: '2021-06-11T06:00:00',
+                    //         end: '2021-06-11T20:30:00',
+                    //         name: '모바일웹프로그래밍 발표'
+                    //     },
+                    //     {
+                    //         start: '2021-06-09T06:00:00',
+                    //         end: '2021-06-09T20:30:00',
+                    //         name: '로봇비전시스템 기말고사'
+                    //     },
+                    //     {
+                    //         start: '2021-07-16T06:00:00',
+                    //         end: '2021-07-16T20:30:00',
+                    //         name: '종합설계 최종발표'
+                    //     }
 
-                    ],
+                    // ],
                     primaryColor: '#DB3A00',
                     headerColor: '#DB3A00',
                     headerBackgroundColor: '#FFFFFF',
@@ -182,6 +183,12 @@
                     dropShadow: "0 7px 30px -10px rgba(150, 170, 180, 0.5)",
                     disableMonthYearPickers: true
                 })
+                myCal.monthChanged =function(currentDate, filteredMonthEvents){
+                    console.log('month changed fired')
+                    ReceiveEventsAndRedraw(currentDate.getFullYear(), currentDate.getMonth())
+                }
+                var selDate = myCal.getSelectedDate()
+                ReceiveEventsAndRedraw(selDate.getFullYear(),selDate.getMonth())
                 // 캘린더에 클릭 이벤트 리스너를 붙여준다.
                 myCal.calendarDays.addEventListener('click', handleCalendarDayClick);
                 myCal.prevButton.addEventListener('click', function empty(){
@@ -190,6 +197,37 @@
                 myCal.nextButton.addEventListener('click', function empty(){
                     $("#list").empty();
                 });
+
+                function ReceiveEventsAndRedraw(year, month){
+                    if(isChanging)return
+                    isChanging=true
+                    month=month+1
+                    if(month.length == 1){
+                        month="0"+month
+                    }
+                    console.log('start fetch : ' + `https://us-central1-mme-info.cloudfunctions.net/apis-getSchedulesByMonth?year=${year}&month=${month}`);
+                    fetch(`https://us-central1-mme-info.cloudfunctions.net/apis-getSchedulesByMonth?year=${year}&month=${month}`)
+                    .then((response)=> response.json()).then((datas)=>{
+                        console.log('got fetch data : '+datas)
+                        var eventDatas=[]
+                        datas.forEach(element => {
+                            if(element.isenabled!=true){
+                                return
+                            }
+                            var from = new Date(element.start._seconds*1000)
+                            var name=element.name
+                            var to = new Date(element.end._seconds*1000)
+                            eventDatas.push({
+                                start:from,
+                                end:to,
+                                name:name
+                            })
+                        });
+                        myCal.setEventsData(eventDatas)
+                        isChanging=false
+                    })
+                }
+
                 function handleCalendarDayClick(e) {
                     // 예외1 : 다른 부분들을 클릭한 경우
                     if (
