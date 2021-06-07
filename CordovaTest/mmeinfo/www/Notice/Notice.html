@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <head>
         <title>Notice</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;user-scalable=no">
         <link rel="stylesheet" href="Notice.css">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         <link rel="stylesheet" href="../Resources/JQuery/overall.min.css" />
@@ -12,11 +12,11 @@
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="Notice.js"></script>
-        <script>
+        <!-- <script>
             $(document).delegate('.ui-page', 'pageshow', function () {
                 makeNoticePage()
             });
-        </script>
+        </script> -->
         <style>
           @media (max-width: 1000px) {
               body{
@@ -47,6 +47,9 @@
       <div data-role="page">
         <!----------------------------------근남 부분------------------------------------->
          <!----------------------------------근남 부분------------------------------------->
+         <!-- 메뉴 오픈 클릭시 전체회색화면-->
+        <div id="grayScreen" style="display: none; position: absolute;background-color: #E8E8E8; width: 100%; height: 100%; opacity: 0.5; z-index: 10;"></div>
+        <!-- 헤더 -->
          <div data-role="header" id="header" style="height: 8em;width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white;">
           <div id="header_backbutton" style="width: 27%; height: 100%; overflow: hidden; position: relative; padding-left: 1em;display: inline-block;text-align: left;">
               <a style="vertical-align: middle;" onclick="$.mobile.back();"><img height="25em" src="../Resources/header_Menu_Image/back_img.png"></a>
@@ -56,21 +59,23 @@
               </button>
               <script type="text/javascript">
                   function activeNav(){ 
-                      var m_menu = document.getElementById("menu");
-                      var m_header = document.getElementById("header")
-                      var m_body = document.getElementsByTagName("body");
-                      if(m_menu.style.display =='none'){
-                          m_menu.style.display = 'inline-block';
-                          m_header.style.backgroundColor="#E8E8E8";
-                          m_body[0].style.backgroundColor = "#E8E8E8";
-                          m_body[0].style.opacity= "1"
-                      }else{
-                          m_menu.style.display = 'none';
-                          m_header.style.backgroundColor="#FFFFFF";
-                          m_body[0].style.backgroundColor = "#FFFFFF";
-                          m_body[0].style.opacity= "1"
-                      }
-                  }
+                    var m_menu = document.getElementById("menu");
+                    var m_grayScreen = document.getElementById("grayScreen");
+                    if(m_menu.style.display =='none'){
+                        $("#menu").show(200);
+                        m_grayScreen.style.display= 'inline-block';
+                    }else{
+                        $("#menu").hide(200);
+                        m_grayScreen.style.display='none';
+                    }
+                }
+
+                $("#grayScreen").click(function(){
+                    var m_menu = document.getElementById("menu");
+                    var m_grayScreen = document.getElementById("grayScreen");
+                    m_menu.style.display = 'none';
+                    m_grayScreen.style.display='none';
+                });
               </script>
           </div>
       </div>
@@ -83,16 +88,16 @@
           </div>
           
           <ul data-role="none" id="menu-list" style="list-style:none; font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
-              <li id="page_Notice">
-                  <a href="../Notices/Notices.html">NOTICE.</a>
-              </li>
-              <li id="page_Calendar">
-                  <a href="">CALENDAR.</a>
-              </li>
-              <li id="page_QA">
-                  <a href="../Q&As/Q&As.html">Q&A.</a>
-              </li>
-          </ul>
+            <li id="page_Notice" >
+                <a href="Notices/Notices.html" rel="external" >NOTICE.</a>
+            </li>
+            <li id="page_Calendar">
+                <a href="Calendar/calendar.html" rel="external" >CALENDAR.</a>
+            </li>
+            <li id="page_QA">
+                <a href="Q&As/Q&As.html" rel="external">Q&A.</a>
+            </li>
+        </ul>
       </div>
       <style> 
           #header_backbutton:after{display:inline-block; height:100%; content:""; vertical-align:middle;}

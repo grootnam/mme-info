@@ -1,5 +1,7 @@
 // window.onload=makeNoticePage()
-
+$(document).delegate('.ui-page', 'pageshow', function () {
+    makeNoticePage()
+});
  function makeNoticePage(){
      var cur=localStorage.getItem("selectedNotice")
      if(cur.length<=0){
@@ -11,7 +13,7 @@
          console.log('obj unparsable : ',cur)
          return;
      }
-
+     
      var title=document.getElementById('title')
      var content = document.getElementById('content')
      var link=document.getElementById('link')
