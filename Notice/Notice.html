@@ -42,6 +42,9 @@
       <div data-role="page">
         <!----------------------------------근남 부분------------------------------------->
          <!----------------------------------근남 부분------------------------------------->
+         <!-- 메뉴 오픈 클릭시 전체회색화면-->
+        <div id="grayScreen" style="display: none; position: absolute;background-color: #E8E8E8; width: 100%; height: 100%; opacity: 0.5;"></div>
+        <!-- 헤더 -->
          <div data-role="header" id="header" style="height: 8em;width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white;">
           <div id="header_backbutton" style="width: 27%; height: 100%; overflow: hidden; position: relative; padding-left: 1em;display: inline-block;text-align: left;">
               <a style="vertical-align: middle;" onclick="$.mobile.back();"><img height="25em" src="../Resources/header_Menu_Image/back_img.png"></a>
@@ -51,21 +54,23 @@
               </button>
               <script type="text/javascript">
                   function activeNav(){ 
-                      var m_menu = document.getElementById("menu");
-                      var m_header = document.getElementById("header")
-                      var m_body = document.getElementsByTagName("body");
-                      if(m_menu.style.display =='none'){
-                          m_menu.style.display = 'inline-block';
-                          m_header.style.backgroundColor="#E8E8E8";
-                          m_body[0].style.backgroundColor = "#E8E8E8";
-                          m_body[0].style.opacity= "1"
-                      }else{
-                          m_menu.style.display = 'none';
-                          m_header.style.backgroundColor="#FFFFFF";
-                          m_body[0].style.backgroundColor = "#FFFFFF";
-                          m_body[0].style.opacity= "1"
-                      }
-                  }
+                    var m_menu = document.getElementById("menu");
+                    var m_grayScreen = document.getElementById("grayScreen");
+                    if(m_menu.style.display =='none'){
+                        $("#menu").show(200);
+                        m_grayScreen.style.display= 'inline-block';
+                    }else{
+                        $("#menu").hide(200);
+                        m_grayScreen.style.display='none';
+                    }
+                }
+
+                $("#grayScreen").click(function(){
+                    var m_menu = document.getElementById("menu");
+                    var m_grayScreen = document.getElementById("grayScreen");
+                    m_menu.style.display = 'none';
+                    m_grayScreen.style.display='none';
+                });
               </script>
           </div>
       </div>
