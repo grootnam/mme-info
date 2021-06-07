@@ -43,11 +43,12 @@ function clickBtnAdd(){
         }
       })
     }).then((response)=> {
+        clickBtnSearch()
         console.log('response : ', response)
         return response.json()
     }).then((respjson) =>{
       console.log('get response ', respjson)
-      alert("get response : ", respjson)
+      //alert("get response : ", respjson)
     })
 }
 
@@ -73,7 +74,7 @@ function clickBtnSearch(){
           var to = new Date(element.end._seconds*1000)
           var isEnabled = element.isenabled
 
-          var text=`${name}, ${from.toUTCString()} ~ ${to.toUTCString()}, ${Boolean(isEnabled) == true ? '사용중' : '사용X'}`
+          var text=`${name}, ${from.toLocaleString()} ~ ${to.toLocaleString()}, ${Boolean(isEnabled) == true ? '사용중' : '사용X'}`
           var btn=document.createElement('button')
           btn.onclick = function(){
               changeScheduleMode(element)
@@ -84,6 +85,16 @@ function clickBtnSearch(){
           schedule_list.appendChild(nd)
       });
     })
+}
+
+function clickForceSend(){
+  console.log("clicked force push")
+  fetch("https://us-central1-mme-info.cloudfunctions.net/apis-sendMessageDailyForce").then((response)=> {
+    console.log('response : ', response)
+    return response.json()
+  }).then((datas) =>{
+    console.log('get response ', datas)
+  })
 }
 
 function changeScheduleMode(element){

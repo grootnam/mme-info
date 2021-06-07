@@ -1,113 +1,273 @@
 const functions = require("firebase-functions");
-const admin =require("firebase-admin")
+const admin = require("firebase-admin");
 const db = require("./adminInit").db;
 const { firestore } = require("firebase-admin");
 const cors = require("cors")({ origin: true });
 
-const msgTopic = "event"
+const msgTopic = "event";
 
-exports.sendMessageStringOnly = functions.https.onRequest((request, response) =>{
-  return cors(request, response, ()=>{
-    var jsn = JSON.parse(String(request.body))
-    var msg = 'msgtest '+ String(jsn["message"])
-    var message = {
-      "topic": msgTopic,
-      "notification": {
-        "title": "Background Message Title",
-        "body": msg
-      },
-      "webpush": {
-        "fcm_options": {
-          "link": "https://dummypage.com"
-        }
-      },
-      data: {
-        message : msg
-      }
-    }
-    return admin.messaging().send(message).then((response2) => {
-        response.status(200).send({
-          success: true,
+exports.sendMessageStringOnly = functions.https.onRequest(
+  (request, response) => {
+    return cors(request, response, () => {
+      var jsn = JSON.parse(String(request.body));
+      var msg = "msgtest " + String(jsn["message"]);
+      var message = {
+        topic: msgTopic,
+        notification: {
+          title: "Background Message Title",
+          body: msg,
+        },
+        webpush: {
+          fcm_options: {
+            link: "https://dummypage.com",
+          },
+        },
+        data: {
+          message: msg,
+        },
+      };
+      return admin
+        .messaging()
+        .send(message)
+        .then(
+          (response2) => {
+            response.status(200).send({
+              success: true,
+            });
+            return;
+          },
+          (reason) => {
+            response.status(405).send(reason);
+            return;
+          }
+        )
+        .catch((error) => {
+          response.status(405).send(error);
+          return;
         });
-        return
-      }, (reason)=>{
-        response.status(405).send(reason);
-        return
-      })
-      .catch((error) => {
-        response.status(405).send(error);
-        return
-      });
-  })
-})
+    });
+  }
+);
 
-exports.sendToken=functions.https.onRequest((request, response)=>{
-  cors(request,response,()=>{
-    var body = request.body
-    var token = body["token"]
-    var tokenRef=db.collection('tokens');
-    return tokenRef.where("token", "==", token).get().then((snap)=>{
-      if(snap.size<=0){
-        return tokenRef.doc().set({
-          token : body.token
-        }).then((result)=>{
-          admin.messaging().subscribeToTopic(token, msgTopic).then((res)=>{
-          }).catch((err)=>{
-            response.status(405).send(err);
-          })
+exports.sendMessageDailyForce = functions.https.onRequest(
+  (request, response) => {
+    return cors(request, response, () => {
+      var curDate = new Date();
+
+      var curymd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth(), curDate.getUTCDate())
+      var nextYmd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth()+1)
+
+      var collectionName = "schedules";
+      var scheduleRef = db.collection(collectionName);
+
+      return scheduleRef
+        .where("isenabled", "==", true)
+        .where("start", ">=", curymd)
+        .where("start", "<=", nextYmd)
+        .get()
+        .then((snap) => {
+          console.log("get data : length", snap.docs.length);
+          if (snap.docs.length <= 0) {
+            response.status(200).send({
+              success: true,
+            });
+            return
+          }
+
+          var msgs = [];
+          snap.docs.forEach((qsnap) => {
+            var element = qsnap.data()
+            var from = new Date(element["start"]["_seconds"]*1000)
+            var to = new Date(element["end"]["_seconds"]*1000)
+            msgs.push(
+              `오늘의 스케줄: ${
+                element["name"]
+              }, ${from.toLocaleTimeString()} 부터 ${to.toLocaleString()}까지`
+            );
+          });
+          var msg = msgs.join("\n");
+          var message = {
+            topic: msgTopic,
+            notification: {
+              title: "MMESEUM 알림",
+              body: msg,
+            },
+            webpush: {
+              fcm_options: {
+                link: "https://mme.dongguk.edu",
+              },
+            },
+            data: {
+              message: msg,
+            },
+          };
+          return admin
+            .messaging()
+            .send(message)
+            .then(
+              (response2) => {
+                response.status(200).send({
+                  success: true,
+                });
+                return;
+              },
+              (reason) => {
+                response.status(405).send(reason);
+                return;
+              }
+            )
+            .catch((error) => {
+              response.status(405).send(error);
+              return;
+            });
+        });
+    });
+  }
+);
+
+exports.sendMessageDaily = functions.pubsub
+  .schedule("0 9,12 * * *")
+  .timeZone("Asia/Seoul")
+  .onRun((context) => {
+    var curDate = new Date();
+
+    var curymd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth(), curDate.getUTCDate())
+    var nextYmd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth()+1)
+
+    var collectionName = "schedules";
+    var scheduleRef = db.collection(collectionName);
+
+    return scheduleRef
+    .where("isenabled", "==", true)
+    .where("start", ">=", curymd)
+    .where("start", "<=", nextYmd)
+      .get()
+      .then((snap) => {
+        if (snap.docs.length <= 0) {
+          return;
+        }
+
+        var msgs = [];
+        snap.docs.forEach((qsnap) => {
+          var element = qsnap.data()
+          var from = new Date(element["start"]["_seconds"]*1000)
+          var to = new Date(element["end"]["_seconds"]*1000)
+          msgs.push(
+            `오늘의 스케줄: ${
+              element["name"]
+            }, ${from.toLocaleTimeString()} 부터 ${to.toLocaleString()}까지`
+          );
+        });
+        var msg = msgs.join("\n");
+        var message = {
+          topic: msgTopic,
+          notification: {
+            title: "MMESEUM 알림",
+            body: msg,
+          },
+          webpush: {
+            fcm_options: {
+              link: "https://mme.dongguk.edu",
+            },
+          },
+          data: {
+            message: msg,
+          },
+        };
+        return admin
+          .messaging()
+          .send(message)
+          .then(
+            (response2) => {
+              return;
+            },
+            (reason) => {
+              console.log('daily push send failed reason : ',reason)
+              return;
+            }
+          )
+          .catch((error) => {
+            console.log('daily push send failed error : ',error)
+            return;
+          });
+      });
+  });
+
+exports.sendToken = functions.https.onRequest((request, response) => {
+  cors(request, response, () => {
+    var body = request.body;
+    var token = body["token"];
+    var tokenRef = db.collection("tokens");
+    return tokenRef
+      .where("token", "==", token)
+      .get()
+      .then((snap) => {
+        if (snap.size <= 0) {
+          return tokenRef
+            .doc()
+            .set({
+              token: body.token,
+            })
+            .then(
+              (result) => {
+                admin
+                  .messaging()
+                  .subscribeToTopic(token, msgTopic)
+                  .then((res) => {})
+                  .catch((err) => {
+                    response.status(405).send(err);
+                  });
+                response.status(200).send({
+                  success: true,
+                });
+              },
+              (reason) => {
+                response.status(405).send(reason);
+              }
+            );
+        } else {
           response.status(200).send({
             success: true,
           });
-        }, (reason)=>{
-          response.status(405).send(reason);
-        })
-      }
-      else{
-        response.status(200).send({
-          success: true,
-        });
-      }
-    })
+        }
+      });
   });
 });
 
-exports.postData =  functions.https.onRequest((request, response) => {
+exports.postData = functions.https.onRequest((request, response) => {
   return cors(request, response, () => {
     // var body = request.body;
     // console.log('postData get body : ',body)
     // response.set('Access-Control-Allow-Origin', "*")
-    var body = JSON.parse(String(request.body))
-    var indexName="";
-    var collectionName="";
+    var body = JSON.parse(String(request.body));
+    var indexName = "";
+    var collectionName = "";
 
     //console.log('postdata get body type : ' + body["type"])
 
-    if(body["type"] == "qna"){
-      indexName = "qna_last_index"
-      collectionName = "qnas"
-    }
-    else if(body["type"] == "notice"){
-      indexName = "notice_last_index"
-      collectionName = "notices"
-    }
-    else if(body["type"] == "schedule"){
-      indexName="schedule_last_index"
-      collectionName="schedules"
-      var data=body["data"]
-      var orgStart = data["start"]
-      var orgEnd= data["end"]
+    if (body["type"] == "qna") {
+      indexName = "qna_last_index";
+      collectionName = "qnas";
+    } else if (body["type"] == "notice") {
+      indexName = "notice_last_index";
+      collectionName = "notices";
+    } else if (body["type"] == "schedule") {
+      indexName = "schedule_last_index";
+      collectionName = "schedules";
+      var data = body["data"];
+      var orgStart = data["start"];
+      var orgEnd = data["end"];
       //console.log('org start and end: ',orgStart,orgEnd)
-      var dStart = new Date(orgStart)
-      var dEnd = new Date(orgEnd)
+      var dStart = new Date(orgStart);
+      var dEnd = new Date(orgEnd);
       //console.log('dt start and end: ',dStart,dEnd)
-      data["start"] = firestore.Timestamp.fromDate(dStart)
-      data["end"] = firestore.Timestamp.fromDate(dEnd)
+      data["start"] = firestore.Timestamp.fromDate(dStart);
+      data["end"] = firestore.Timestamp.fromDate(dEnd);
 
-     // console.log('altered body : ',body)
-    }
-    else{
+      // console.log('altered body : ',body)
+    } else {
       response.status(405).send({
-        message : 'write data type ! '
+        message: "write data type ! ",
       });
     }
 
@@ -119,10 +279,10 @@ exports.postData =  functions.https.onRequest((request, response) => {
       var dbRef = db.collection(collectionName);
 
       //console.log('got '+indexName+" : ",index);
-      var newData=body["data"];
-      newData["index"] = index+1
+      var newData = body["data"];
+      newData["index"] = index + 1;
       newData["timestamp"] = firestore.Timestamp.fromDate(new Date());
-     // console.log('final new databody : ',newData)
+      // console.log('final new databody : ',newData)
       return dbRef
         .doc()
         .set(newData)
@@ -146,27 +306,24 @@ exports.postData =  functions.https.onRequest((request, response) => {
 
 exports.editData = functions.https.onRequest((request, response) => {
   return cors(request, response, () => {
-    var body = JSON.parse(String(request.body))
-    var collectionName="";
+    var body = JSON.parse(String(request.body));
+    var collectionName = "";
 
-    if(body.type == 'qna'){
-      collectionName = "qnas"
-    }
-    else if(body.type == 'notice'){
-      collectionName = "notices"
-    }
-    else if(body.type == 'schedule'){
-      collectionName="schedules"
-    }
-    else{
+    if (body.type == "qna") {
+      collectionName = "qnas";
+    } else if (body.type == "notice") {
+      collectionName = "notices";
+    } else if (body.type == "schedule") {
+      collectionName = "schedules";
+    } else {
       response.status(405).send({
-        message : 'write data type ! '
+        message: "write data type ! ",
       });
     }
 
     var index = Number(body.index);
 
-    console.log('final index ',index, 'final collectionName ',collectionName)
+    console.log("final index ", index, "final collectionName ", collectionName);
 
     var noticesref = db.collection(collectionName);
     var query = noticesref.where("index", "==", index);
@@ -185,22 +342,19 @@ exports.editData = functions.https.onRequest((request, response) => {
   });
 });
 
-exports.getCurrentLastIndex= functions.https.onRequest((request, response) => {
+exports.getCurrentLastIndex = functions.https.onRequest((request, response) => {
   return cors(request, response, () => {
-    var type=request.query.type
-    var indexName=""
-    if(type == 'qna'){
-      indexName = "qna_last_index"
-    }
-    else if(type == 'notice'){
-      indexName = "notice_last_index"
-    }
-    else if(type == 'schedule'){
-      indexName="schedule_last_index"
-    }
-    else{
+    var type = request.query.type;
+    var indexName = "";
+    if (type == "qna") {
+      indexName = "qna_last_index";
+    } else if (type == "notice") {
+      indexName = "notice_last_index";
+    } else if (type == "schedule") {
+      indexName = "schedule_last_index";
+    } else {
       response.status(405).send({
-        message : 'write data type ! '
+        message: "write data type ! ",
       });
     }
     var getCurrentMetadataPromise = db
@@ -218,22 +372,19 @@ exports.getCurrentLastIndex= functions.https.onRequest((request, response) => {
 
 exports.getDatasByIndexs = functions.https.onRequest((request, response) => {
   return cors(request, response, () => {
-    var type = request.query.type
+    var type = request.query.type;
     var from = Number(request.query.from);
     var to = Number(request.query.to);
-    var collectionName=""
-    if(type == 'qna'){
-      collectionName = "qnas"
-    }
-    else if(type == 'notice'){
-      collectionName = "notices"
-    }
-    else if(type == 'schedule'){
-      collectionName="schedules"
-    }
-    else{
+    var collectionName = "";
+    if (type == "qna") {
+      collectionName = "qnas";
+    } else if (type == "notice") {
+      collectionName = "notices";
+    } else if (type == "schedule") {
+      collectionName = "schedules";
+    } else {
       response.status(405).send({
-        message : 'write data type ! '
+        message: "write data type ! ",
       });
     }
     return GetCurrentQnasHighestIndex().then((index) => {
@@ -276,57 +427,58 @@ exports.getDatasByIndexs = functions.https.onRequest((request, response) => {
   });
 });
 
-exports.getWritingsByCategory = functions.https.onRequest((request, response) => {
-  return cors(request, response, () => {
-    var type = request.query.type;
-    var category = request.query.category;
-    var collectionName=""
-    if(type == 'qna'){
-      collectionName = "qnas"
-    }
-    else if(type == 'notice'){
-      collectionName = "notices"
-    }
-    else{
-      response.status(405).send({
-        message : 'write right data type ! '
-      });
-    }
-    var qnasRef = db.collection(collectionName);
-    return qnasRef
-      .where("category", "==", category)
-      .get()
-      .then(
-        (snap) => {
-          response.status(200).send(snap.docs.map((doc) => doc.data()));
-        },
-        (reason) => {
-          response.status(404).send(reason);
-        }
-      );
-  });
-});
+exports.getWritingsByCategory = functions.https.onRequest(
+  (request, response) => {
+    return cors(request, response, () => {
+      var type = request.query.type;
+      var category = request.query.category;
+      var collectionName = "";
+      if (type == "qna") {
+        collectionName = "qnas";
+      } else if (type == "notice") {
+        collectionName = "notices";
+      } else {
+        response.status(405).send({
+          message: "write right data type ! ",
+        });
+      }
+      var qnasRef = db.collection(collectionName);
+      return qnasRef
+        .where("category", "==", category)
+        .get()
+        .then(
+          (snap) => {
+            response.status(200).send(snap.docs.map((doc) => doc.data()));
+          },
+          (reason) => {
+            response.status(404).send(reason);
+          }
+        );
+    });
+  }
+);
 
-exports.getSchedulesByMonth= functions.https.onRequest((request, response) => {
+exports.getSchedulesByMonth = functions.https.onRequest((request, response) => {
   cors(request, response, () => {
     var year = Number(request.query.year);
     var month = Number(request.query.month);
-    var collectionName="schedules"
+    var collectionName = "schedules";
     var qnasRef = db.collection(collectionName);
 
-    if(year ==0 || month == 0){
+    if (year == 0 || month == 0) {
       response.status(405).send({
-        message : 'write right data type ! '
+        message: "write right data type ! ",
       });
-      return
+      return;
     }
 
-    var fromMonth=new Date(year,month-1)
-    var toMonth=new Date(year, month)
-    console.log('fromMonth: ',fromMonth,'toMonth: ',toMonth)
+    var fromMonth = new Date(year, month - 1);
+    var toMonth = new Date(year, month);
+    console.log("fromMonth: ", fromMonth, "toMonth: ", toMonth);
     // toMonth.setDate(fromMonth.getDate() + 31)
     return qnasRef
-      .where("start", ">=", fromMonth).where("start","<=",toMonth)
+      .where("start", ">=", fromMonth)
+      .where("start", "<=", toMonth)
       .get()
       .then(
         (snap) => {
