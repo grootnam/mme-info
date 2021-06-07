@@ -51,7 +51,7 @@ function onDeviceReady() {
         })
       }).then((response) =>{
         console.log('get response ', response)
-        alert("get response : " + response.body)
+        //alert("get response : " + response.body)
         FCM.subscribeToTopic("event")
       })
     })
@@ -74,7 +74,7 @@ function onDeviceReady() {
 		}
 	  },
 	  function(msg){
-		alert('onNotification callback successfully registered: ' + msg)
+		alert('메시지가 도착했습니다! \n' + msg)
 		console.log('onNotification callback successfully registered: ' + msg);
 	  },
 	  function(err){
