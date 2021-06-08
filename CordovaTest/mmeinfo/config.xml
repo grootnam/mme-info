@@ -2,7 +2,8 @@
 <widget id="com.dgumme.mmeinfo" version="1.0.0"
  xmlns="http://www.w3.org/ns/widgets" 
  xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MME-INFO</name>
+    <icon src="www/Resources/icon.png" platform="ios" width="57" height="57" density="mdpi" />
+    <name>ALiMME</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
