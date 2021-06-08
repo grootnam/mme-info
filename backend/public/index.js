@@ -132,9 +132,14 @@ function clickBtnWriteNotice(){
   var category=document.getElementById('category').value
   var content=document.getElementById('content').value
   var link=document.getElementById('link').value
+  var linkName=document.getElementById('linkName').value
 
   if(link == undefined){
     link=""
+  }
+
+  if(linkName == undefined){
+    linkName = ""
   }
 
   fetch("https://us-central1-mme-info.cloudfunctions.net/apis-postData",{
@@ -151,7 +156,8 @@ function clickBtnWriteNotice(){
           "title" : title,
           "category" : category,
           "content" : content,
-          "link" : link
+          "link" : link,
+          "linkname" : linkName
         }
       })
     }).then((response)=> response.json()).then((respjson) =>{

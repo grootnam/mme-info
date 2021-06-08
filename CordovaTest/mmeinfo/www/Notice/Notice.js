@@ -26,7 +26,7 @@ $(document).delegate('.ui-page', 'pageshow', function () {
      content.innerText=obj["content"]
 
      if(obj["link"]){
-         link.innerText=obj["link"]
+         link.innerText=obj["linkname"]
          link.href=obj["link"]
      }
  }
