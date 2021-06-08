@@ -47,6 +47,9 @@ function makePage() {
     .then((response) => response.json())
     .then((datas) => {
       notices = [];
+      datas=datas.sort((a,b)=>{
+        return Number(b["index"]) - Number(a["index"])
+      })
       datas.forEach((element) => {
         notices.push({
           type: element["category"],

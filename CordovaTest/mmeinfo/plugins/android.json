@@ -17,7 +17,14 @@
       "ANDROID_GOOGLE_SERVICES_VERSION": "4.3.4",
       "ANDROID_GRADLE_TOOLS_VERSION": "4.1.0",
       "PACKAGE_NAME": "com.dgumme.mmeinfo"
+    },
+    "cordova-plugin-shake": {
+      "PACKAGE_NAME": "com.dgumme.mmeinfo"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-device-motion": {
+      "PACKAGE_NAME": "com.dgumme.mmeinfo"
+    }
+  }
 }
