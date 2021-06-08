@@ -134,7 +134,6 @@ a:visited { color: black; }
 }
 
 .content_tail:after {
-    content: '⇒';
     right: 1.5em;
     position: absolute;
     opacity: 0;  
