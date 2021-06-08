@@ -127,6 +127,79 @@ function changeScheduleMode(element){
     })
 }
 
+function clickBtnGetNotices(){
+  fetch(
+    "https://us-central1-mme-info.cloudfunctions.net/apis-getDatasByIndexs?type=notice&from=0&to=100"
+  )
+    .then((response) => response.json())
+    .then((datas) => {
+      var noticelist=document.getElementById('noticelist')
+      while(noticelist.firstChild){
+        noticelist.removeChild(noticelist.firstChild)
+      }
+      datas.forEach((element)=>{
+        var titlep = document.createElement('p')
+        titlep.innerText=element["title"]
+        titlep.onclick=function(){
+          var index=document.getElementById('index')
+          var title=document.getElementById('title')
+          var category=document.getElementById('category')
+          var content=document.getElementById('content')
+          var link=document.getElementById('link')
+          var linkName=document.getElementById('linkName')
+          index.innerText=element["index"]
+          title.value=element["title"]
+          category.value=element["category"]
+          content.value=element["content"]
+          link.value=element["link"]
+          linkName.value=element["linkname"]
+        }
+        noticelist.appendChild(titlep)
+      })
+    })
+}
+
+function clickBtnEditNotice(){
+  var index=document.getElementById('index').innerText
+  var title=document.getElementById('title').value
+  var category=document.getElementById('category').value
+  var content=document.getElementById('content').value
+  var link=document.getElementById('link').value
+  var linkName=document.getElementById('linkName').value
+
+  if(link == undefined){
+    link=""
+  }
+
+  if(linkName == undefined){
+    linkName = ""
+  }
+
+  fetch("https://us-central1-mme-info.cloudfunctions.net/apis-editData",{
+      "method" : "POST",
+      "mode": "no-cors", 
+      "cache": "no-cache", 
+      "credentials": "same-origin", 
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body" : JSON.stringify({
+        "type" : "notice",
+        "index" : Number(index),
+        "data" : {
+          "title" : title,
+          "category" : category,
+          "content" : content,
+          "link" : link,
+          "linkname" : linkName
+        }
+      })
+    }).then((respjson) =>{
+      console.log('get response ', respjson)
+      window.location.reload()
+    })
+}
+
 function clickBtnWriteNotice(){
   var title=document.getElementById('title').value
   var category=document.getElementById('category').value
@@ -142,7 +215,7 @@ function clickBtnWriteNotice(){
     linkName = ""
   }
 
-  fetch("https://us-central1-mme-info.cloudfunctions.net/apis-postData",{
+  fetch("https://us-central1-mme-info.cloudfunctions.net/dsadapis-postData",{
       "method" : "POST",
       "mode": "no-cors", 
       "cache": "no-cache", 
@@ -160,8 +233,8 @@ function clickBtnWriteNotice(){
           "linkname" : linkName
         }
       })
-    }).then((response)=> response.json()).then((respjson) =>{
+    }).then((respjson) =>{
       console.log('get response ', respjson)
-      //alert("get response : ", respjson)
+      window.location.reload()
     })
 }
