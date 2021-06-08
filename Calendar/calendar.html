@@ -24,7 +24,7 @@
     <!-- 헤더 -->
     <div data-role="header" id="header" style="height: 4em;width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white;">
         <div id="header_backbutton" style="width: 27%; height: 100%; overflow: hidden; position: relative; padding-left: 0.5em;display: inline-block;text-align: left;">
-            <a style="vertical-align: middle;" onclick="$.mobile.back();"><img height="25em" src="../Resources/header_Menu_Image/back_img.png"></a>
+            <a style="vertical-align: middle;" href="../Home/Home.html" rel="external"><img height="25em" src="../Resources/header_Menu_Image/back_img.png"></a>
         </div><div id="header_menu" style="width: 70%; height: 100%; right: 0;overflow: hidden; position: relative; display: inline-block;">
             <button id="showRightMenuOpen" class="ui-btn"alt="menu" onclick="activeNav()" style="padding: 0 0 0 0;position: fixed ;border-style: none; background-color: white;">
                 <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
@@ -61,13 +61,13 @@
         
         <ul data-role="none" id="menu-list" style="list-style:none; font-size: 1.5em ;display: block; position: fixed; top: 13%; text-decoration: none;">
             <li id="page_Notice">
-                <a href="../Notices/Notices.html">NOTICE.</a>
+                <a href="../Notices/Notices.html" rel="external">NOTICE.</a>
             </li>
             <li id="page_Calendar">
-                <a href="../Calendar/calendar.html">CALENDAR.</a>
+                <a href="../Calendar/calendar.html" rel="external">CALENDAR.</a>
             </li>
             <li id="page_QA">
-                <a href="../Q&As/Q&As.html">Q&A.</a>
+                <a href="../Q&As/Q&As.html" rel="external">Q&A.</a>
             </li>
         </ul>
     </div>
