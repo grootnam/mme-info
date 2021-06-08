@@ -62,10 +62,6 @@ a:visited { color: black; }
     background-color: white;
 }
 
-#menu_font{
-    font-size: 1.2em;
-}
-
 .bar-item{
     width:100%;
     display:block;
