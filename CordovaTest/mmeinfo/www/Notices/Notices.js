@@ -53,6 +53,7 @@ function makePage() {
           title: element["title"],
           content: element["content"],
           link: element["link"],
+          linkname:element["linkname"]
         });
       });
       notices.forEach((element) => {
