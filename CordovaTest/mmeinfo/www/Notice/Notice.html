@@ -28,6 +28,9 @@
               .comment_head, .comment_tail{
                 font-size: auto;
               }
+              #contents{
+                  font-size: 1.5em;
+              }
           }
           @media (min-width: 1001px) {
               .main-up {
@@ -110,9 +113,7 @@
               text-decoration: none;
           }
           #menu-list a:visited { color: black; text-decoration: none;}
-          #menu-list li{
-              text-align: left
-          }
+          #menu-list li{ text-align: left; margin-top: 1.3em;  margin-bottom: 1.3em;}
           #page_Notice:hover{
           background-color: #ACDEE7;
           color: white;
@@ -169,7 +170,7 @@
         <div data-role="content" style="margin-bottom: 2em;
                                         margin-bottom: 4em;">
                     
-          <div class="container" style= "width: 70%;
+          <div id="contents" class="container" style= "width: 70%;
                                         margin: 0 auto 0;">
             <p class="post_title" id="title">2021학년도 2학기 복수(연계) 전공</p>
             <div class="post_expl" id="content">1. 신청 대상: 2021학년도 1학기 현재, 2학기 이상 재학생(휴학생 신청불가)<br>(편입생: 편입한 학기부터 신청 가능)<br>
@@ -195,8 +196,6 @@
         </div>
         
         <!----------------------------------------Footer--------------------------------------------->
-        <div data-role="footer">
-        </div>
       </div>
     </body>
 </html>

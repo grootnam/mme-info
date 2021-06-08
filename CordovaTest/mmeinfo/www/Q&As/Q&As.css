@@ -130,6 +130,7 @@ a:visited { color: black; }
     border-radius: 0 0.2em 0.2em 0;
     transition: 0.5s;
     vertical-align: middle;
+    overflow: hidden;
 }
 
 .content_tail:after {
