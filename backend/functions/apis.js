@@ -382,7 +382,7 @@ exports.getDatasByIndexs = functions.https.onRequest((request, response) => {
         message: "write data type ! ",
       });
     }
-    return GetCurrentQnasHighestIndex().then((index) => {
+    return GetCurrentHighestIndex(type).then((index) => {
       if (from > to) {
         response
           .status(400)
@@ -517,7 +517,17 @@ exports.getCommentsByTypeAndIndex=functions.https.onRequest((request, response) 
   });
 });
 
-function GetCurrentQnasHighestIndex() {
+function GetCurrentHighestIndex(type){
+  var indexName=""
+  if (type == "qna") {
+    indexName = "qna_last_index";
+  } else if (type == "notice") {
+    indexName = "notice_last_index";
+  } else if (type == "schedule") {
+    indexName = "schedule_last_index";
+  } else{
+    return -1
+  }
   var getCurrentMetadataPromise = db.doc("metadata/PpmSaO7W089QJuMBY9Md").get();
   return getCurrentMetadataPromise.then((snap) => {
     var index = snap.data()["qna_last_index"];

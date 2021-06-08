@@ -14,16 +14,23 @@
     <nav>
         <ul>
             <li class="index" ><a href="index.html">푸시 및 일정</a></li>
-            <li class="notice current"><a href="notice.html">공지사항작성</a></li>
-            <li class="noticeedit"><a href="noticeedit.html">공지사항수정</a></li>
-            <!-- <li class="career"><a href="etc.html">기타</a></li> -->
+            <li class="notice"><a href="notice.html">공지사항작성</a></li>
+            <li class="noticeedit current"><a href="noticeedit.html">공지사항수정</a></li>
         </ul>
     </nav>
     <section>
         <article>
             <div class="container">
                <div class="card">
-                    <h3>공지사항 등록</h3>
+                    <h3>공지사항 수정</h3>
+                    <button onclick="clickBtnGetNotices()">공지 전체 가져오기</button>
+                    <br>
+                    <div class="card" id="noticelist">
+
+                    </div>
+                    <br>
+                    현재 글 인덱스 : 
+                    <p id="index" ></p><br>
                     제목 : 
                     <input type="text" id="title" ><br>
                     카테고리 : 
@@ -34,7 +41,7 @@
                     <input type="text" id="linkName" ><br>
                     추가 정보 링크 주소:
                     <input type="text" id="link" ><br>
-                    <button id="btnWrite" onclick="clickBtnWriteNotice()">등록</button>
+                    <button id="btnWrite" onclick="clickBtnEditNotice()">수정</button>
                </div>
             </div>
         </article>
