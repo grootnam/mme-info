@@ -30,6 +30,7 @@ const firebaseWebPushKey =
 //import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated'
 document.addEventListener("deviceready", onDeviceReady, false);
 
+
 function onDeviceReady() {
   // Cordova is now initialized. Have fun!
 
@@ -55,6 +56,19 @@ function onDeviceReady() {
       FCM.subscribeToTopic("event");
     });
   });
+
+  var onShake = function(){
+    console.log('shake detected at home')
+    window.location.href="Calendar/calendar.html"
+  }
+  
+  // Start watching for shake gestures and call "onShake"
+  // with a shake sensitivity of 40 (optional, default 30)
+  shake.startWatch(onShake, 40 /*, onError */);
+   
+  // Stop watching for shake gestures
+  // shake.stopWatch();
+  
   // FCM.getToken(
   //   function(token){
   // 	console.log("token :"+ token)
