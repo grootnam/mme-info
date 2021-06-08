@@ -15,13 +15,19 @@
       <style>
         @media (max-width: 1000px) {
             body{
-                font-size: 0.8em;
+                font-size: 0.5em;
             }
             .main-up {
                 padding-top: 35%;
             }
             .comment_head, .comment_tail{
               font-size: auto;
+            }
+            #contents{
+                font-size: 1.5em;
+            }
+            #footers{
+                font-size: 1.5em;
             }
         }
         @media (min-width: 1001px) {
@@ -159,7 +165,7 @@
                   color: white;">Q&A.</p>         
                                         
       <!--------------------------------------Content--------------------------------------->
-      <div data-role="content" style="padding-bottom: 2em 2em;
+      <div id="contents" data-role="content" style="padding-bottom: 2em 2em;
                                       text-align:center; 
                                       margin-bottom: 6em;">
         <div class="container" style= "width: 70%;
@@ -192,7 +198,7 @@
       </div>
       
       <!----------------------------------------Footer--------------------------------------------->
-      <div data-role="footer" style="width: 100%; overflow: hidden; position: fixed; bottom: 0px; background-color:#A0C29E; padding: 0.8em 0;">
+      <div id="footers" data-role="footer" style="width: 100%; overflow: hidden; position: fixed; bottom: 0px; background-color:#A0C29E; padding: 0.8em 0;">
         <div style="float:left; padding-left: 16%; padding-right: 1em;width: 65%;font-size: 1em;">
           <input type="text" placeholder="댓글을 입력하세요">
         </div>
