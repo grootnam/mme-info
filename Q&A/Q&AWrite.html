@@ -23,6 +23,12 @@
             .comment_head, .comment_tail{
               font-size: auto;
             }
+            #contents{
+                font-size: 1.5em;
+            }
+            #footers{
+                font-size: 1.5em;
+            }
         }
         @media (min-width: 1001px) {
             .main-up {
@@ -82,14 +88,14 @@
         </div>
         
         <ul data-role="none" id="menu-list" style="list-style:none; font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
-            <li id="page_Notice" >
-                <a href="../Notices/Notices.html" rel="external" >NOTICE.</a>
+            <li id="page_Notice">
+                <a href="../Notices/Notices.html">NOTICE.</a>
             </li>
             <li id="page_Calendar">
-                <a href="../Calendar/calendar.html" rel="external" >CALENDAR.</a>
+                <a href="">CALENDAR.</a>
             </li>
             <li id="page_QA">
-                <a href="../Q&As/Q&As.html" rel="external">Q&A.</a>
+                <a href="../Q&As/Q&As.html">Q&A.</a>
             </li>
         </ul>
     </div>
@@ -104,9 +110,7 @@
             text-decoration: none;
         }
         #menu-list a:visited { color: black; text-decoration: none;}
-        #menu-list li{
-            text-align: left
-        }
+        #menu-list li{ text-align: left; margin-top: 1.3em;  margin-bottom: 1.3em;}
         #page_Notice:hover{
         background-color: #ACDEE7;
         color: white;
@@ -159,25 +163,31 @@
                   color: white;">Q&A.</p>         
                                         
       <!--------------------------------------Content--------------------------------------->
-      <div data-role="content" style="padding-bottom: 2em 2em;
-                                      text-align:center; 
+      <div id="contents" data-role="content" style="padding-bottom: 2em 2em;          
                                       margin-bottom: 6em;">
         <div class="container" style= "width: 70%;
                                       margin: 0 auto 0;">
           <div class="post_container">
-            <input type="text" id="title" placeholder="제목을 입력해주세요.">
-            <input type="text" id="type" placeholder="class, career, etc중 하나의 타입을 입력해주세요.">
-            <textarea class="post_expl" id="content" placeholder="내용을 입력해주세요."></textarea>
+            <br><span>제목</span>
+            <input type="text" id="title" placeholder="제목을 입력해주세요."><br>
+            <span>카테고리</span>
+            <select name="select-native-3" id="type" data-iconpos="left">
+                <option value="class">수업</option>
+                <option value="class">진로</option>
+                <option value="class">기타</option>
+            </select><br>
+            <span>내용</span>
+            <textarea class="post_expl" id="content" placeholder="내용을 입력해주세요."></textarea><br>
           </div>
         </div>   
       </div>
       
       <!----------------------------------------Footer--------------------------------------------->
-      <div data-role="footer" style="width: 100%; overflow: hidden; position: fixed; bottom: 0px; background-color:#A0C29E; padding: 0.8em 0;">
+      <div id="footers" data-role="footer" style="width: 100%; overflow: hidden; position: fixed; bottom: 0px; background-color:#A0C29E; padding: 0.8em 0;">
         <div style="float:left; padding-left: 16%; padding-right: 1em;width: 65%;font-size: 1em;">
-            <p>우측 버튼을 눌러서 글을 전송해주세요.</p>
-          </div>
-        <li class="fa fa-paper-plane-o send" onclick="sendQuestion()" aria-hidden="true"></li>
+          <input type="text" placeholder="댓글을 입력하세요">
+        </div>
+        <li class="fa fa-paper-plane-o send" style="font-size: 1.2em;" onclick()="" aria-hidden="true"></li>
       </div>
     </div>
   </body>
