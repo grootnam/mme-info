@@ -215,7 +215,7 @@ function clickBtnWriteNotice(){
     linkName = ""
   }
 
-  fetch("https://us-central1-mme-info.cloudfunctions.net/dsadapis-postData",{
+  fetch("https://us-central1-mme-info.cloudfunctions.net/apis-postData",{
       "method" : "POST",
       "mode": "no-cors", 
       "cache": "no-cache", 
