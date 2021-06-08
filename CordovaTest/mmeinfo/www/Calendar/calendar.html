@@ -147,6 +147,15 @@
             <div id="color-calendar" style="width:100%;"></div>
             <script>
                 var isChanging=false;
+                function openLoading(){
+                    var loading=document.getElementById('grayScreen')
+                    loading.style.display= "inline"
+                }
+
+                function closeLoading(){
+                    var loading=document.getElementById('grayScreen')
+                    loading.style.display= "none"
+                }
                 let myCal = new Calendar({
                     theme: 'glass',
                     // eventsData: [
@@ -205,6 +214,7 @@
                         month="0"+month
                     }
                     console.log('start fetch : ' + `https://us-central1-mme-info.cloudfunctions.net/apis-getSchedulesByMonth?year=${year}&month=${month}`);
+                    openLoading();
                     fetch(`https://us-central1-mme-info.cloudfunctions.net/apis-getSchedulesByMonth?year=${year}&month=${month}`)
                     .then((response)=> response.json()).then((datas)=>{
                         console.log('got fetch data : '+datas)
@@ -224,6 +234,7 @@
                         });
                         myCal.setEventsData(eventDatas)
                         isChanging=false
+                        closeLoading();
                     })
                 }
 

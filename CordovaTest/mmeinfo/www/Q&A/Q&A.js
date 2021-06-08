@@ -1,4 +1,14 @@
 
+function openLoading(){
+  var loading=document.getElementById('grayScreen')
+  loading.style.display= "inline"
+}
+
+function closeLoading(){
+  var loading=document.getElementById('grayScreen')
+  loading.style.display= "none"
+}
+
 
 function sendQuestion(){
 
@@ -6,6 +16,7 @@ function sendQuestion(){
     var type=document.getElementById('type').value
     var content=document.getElementById('content').value
 
+    openLoading();
     fetch("https://us-central1-mme-info.cloudfunctions.net/apis-postData",{
         "method" : "POST",
       "mode": "no-cors", 
@@ -24,6 +35,7 @@ function sendQuestion(){
           }
         })
       }).then((response)=>{
+        closeLoading();
         window.location.href="../Q&As/Q&As.html"
       })
 }
@@ -35,6 +47,7 @@ function sendComment(){
         confirm("댓글은 1자 이상 작성해주십시오.")
     }
 
+    openLoading();
     fetch("https://us-central1-mme-info.cloudfunctions.net/apis-postData",{
         "method" : "POST",
       "mode": "no-cors", 
@@ -52,7 +65,8 @@ function sendComment(){
           }
         })
       }).then((response)=>{
-          makeQnaPage()
+        closeLoading();
+        makeQnaPage()
       })
 }
 
@@ -87,7 +101,7 @@ function makeQnaPage() {
     comment_container.removeChild(comment_container.firstChild)
     }
   var idx = obj["index"];
-
+  openLoading();
   fetch(
     "https://us-central1-mme-info.cloudfunctions.net/apis-getCommentsByTypeAndIndex?type=qna&index=" +
       idx
@@ -118,5 +132,6 @@ function makeQnaPage() {
             span.appendChild(div2)
             comment_container.appendChild(span)
         })
+        closeLoading();
     });
 }

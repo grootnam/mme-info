@@ -2,6 +2,16 @@ notices = [];
 
 window.onload = makePage;
 
+function openLoading(){
+  var loading=document.getElementById('grayScreen')
+  loading.style.display= "inline"
+}
+
+function closeLoading(){
+  var loading=document.getElementById('grayScreen')
+  loading.style.display= "none"
+}
+
 function makeCertainPage(categoryName) {
   var container = document.getElementById("content_container");
   while (container.firstChild) {
@@ -41,6 +51,7 @@ function makePage() {
     container.removeChild(container.firstChild);
   }
   console.log("container cleared");
+  openLoading()
   fetch(
     "https://us-central1-mme-info.cloudfunctions.net/apis-getDatasByIndexs?type=notice&from=0&to=100"
   )
@@ -79,6 +90,7 @@ function makePage() {
         newone.appendChild(a);
         container.appendChild(newone);
       });
+      closeLoading()
     });
 }
 

@@ -2,6 +2,16 @@ qnas=[]
 
 window.onload = makePage
 
+function openLoading(){
+  var loading=document.getElementById('grayScreen')
+  loading.style.display= "inline"
+}
+
+function closeLoading(){
+  var loading=document.getElementById('grayScreen')
+  loading.style.display= "none"
+}
+
 function toWritePage(){
   window.location.href="../Q&A/Q&AWrite.html"
 }
@@ -45,6 +55,7 @@ function makePage() {
     container.removeChild(container.firstChild);
   }
   console.log("container cleared");
+  openLoading();
   fetch(
     "https://us-central1-mme-info.cloudfunctions.net/apis-getDatasByIndexs?type=qna&from=0&to=100"
   )
@@ -82,6 +93,7 @@ function makePage() {
         newone.appendChild(a);
         container.appendChild(newone);
       });
+      closeLoading();
     });
 }
 // function makeCertainPage(categoryName){
