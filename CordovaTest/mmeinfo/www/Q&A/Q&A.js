@@ -1,7 +1,32 @@
 
-$(document).delegate(".ui-page", "pageshow", function () {
-  makeQnaPage();
-});
+
+function sendQuestion(){
+
+    var title=document.getElementById('title').value
+    var type=document.getElementById('type').value
+    var content=document.getElementById('content').value
+
+    fetch("https://us-central1-mme-info.cloudfunctions.net/apis-postData",{
+        "method" : "POST",
+      "mode": "no-cors", 
+      "cache": "no-cache", 
+      "credentials": "same-origin", 
+      "headers": {
+        "Content-Type": "application/json"
+      },
+        "body" : JSON.stringify({
+          "type" : "qna",
+          "data" :{
+              "category" : type,
+              "title" : title,
+              "content" : content,
+              "link" :""
+          }
+        })
+      }).then((response)=>{
+        window.location.href="../Q&As/Q&As.html"
+      })
+}
 
 currentObj=undefined
 function sendComment(){
@@ -48,6 +73,8 @@ function makeQnaPage() {
   var title = document.getElementById("title");
   var content = document.getElementById("content");
   var comment_container=document.getElementById("comment_container")
+  var comment = document.getElementById("comment")
+  comment.value=""
 
 
   title.innerText = "";
