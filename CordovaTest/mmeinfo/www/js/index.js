@@ -1,5 +1,5 @@
-const firebaseWebPushKey= "BPp9X_8OLhv6eyggatx5GXea65keYx9vzX65m8T8q6fftvChYJ_okyTMBW58AzDqnhoMjvkhyDn57k82QL_-Udo"
-
+const firebaseWebPushKey =
+  "BPp9X_8OLhv6eyggatx5GXea65keYx9vzX65m8T8q6fftvChYJ_okyTMBW58AzDqnhoMjvkhyDn57k82QL_-Udo";
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -28,81 +28,76 @@ const firebaseWebPushKey= "BPp9X_8OLhv6eyggatx5GXea65keYx9vzX65m8T8q6fftvChYJ_ok
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 
 //import {FCM} from 'cordova-plugin-fcm-with-dependecy-updated'
-document.addEventListener('deviceready', onDeviceReady, false);
+document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+  // Cordova is now initialized. Have fun!
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    //document.getElementById('deviceready').classList.add('ready');
+  console.log("Running cordova-" + cordova.platformId + "@" + cordova.version);
+  //document.getElementById('deviceready').classList.add('ready');
 
-    console.log(FCM)
+  console.log(FCM);
 
-    FCM.getToken({vapidKey : firebaseWebPushKey }).then((token)=>{
-      console.log("token :"+ token)
-		  //alert("token : "+ token);
-      fetch("https://us-central1-mme-info.cloudfunctions.net/apis-sendToken",{
-        "method" : "POST",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body" : JSON.stringify({
-          "token" : token
-        })
-      }).then((response) =>{
-        console.log('get response ', response)
-        //alert("get response : " + response.body)
-        FCM.subscribeToTopic("event")
-      })
-    })
-	// FCM.getToken(
-	//   function(token){
-	// 	console.log("token :"+ token)
-	// 	alert("token : "+ token);
-	//   },
-	//   function(err){
-	// 	console.log('error retrieving token: ' + err);
-	//   }
-	// )
+  FCM.getToken({ vapidKey: firebaseWebPushKey }).then((token) => {
+    console.log("token :" + token);
+    //alert("token : "+ token);
+    fetch("https://us-central1-mme-info.cloudfunctions.net/apis-sendToken", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        token: token,
+      }),
+    }).then((response) => {
+      console.log("get response ", response);
+      //alert("get response : " + response.body)
+      FCM.subscribeToTopic("event");
+    });
+  });
+  // FCM.getToken(
+  //   function(token){
+  // 	console.log("token :"+ token)
+  // 	alert("token : "+ token);
+  //   },
+  //   function(err){
+  // 	console.log('error retrieving token: ' + err);
+  //   }
+  // )
 
-	FCM.onNotification(
-	  function(data){
-		if(data.wasTapped){
-		  alert( JSON.stringify(data) );
-		}else{
-		  alert( JSON.stringify(data) );
-		}
-	  },
-	  function(msg){
-		alert('메시지가 도착했습니다! \n' + msg)
-		console.log('onNotification callback successfully registered: ' + msg);
-	  },
-	  function(err){
-		console.log('Error registering onNotification callback: ' + err);
-	  }
-	);
+  FCM.onNotification(
+    function (data) {
+      //var msg = JSON.stringify(data)
+      alert("메시지가 도착했습니다! \n" + data.message);
+      console.log("onNotification callback successfully registered: " + msg);
+    },
+    // function (msg) {
+    //   alert("메시지가 도착했습니다! \n" + msg);
+    //   console.log("onNotification callback successfully registered: " + msg);
+    // },
+    function (err) {
+      console.log("Error registering onNotification callback: " + err);
+    }
+  );
 
+  // FCM.getToken(function(data){
+  //     var s=JSON.stringify(data) ;
+  //     alert( s );
+  //     console.log(s);
+  // },function(data){
+  //     alert( s );
+  //     console.log(s);
+  // })
 
-    // FCM.getToken(function(data){
-    //     var s=JSON.stringify(data) ;
-    //     alert( s );
-    //     console.log(s);
-    // },function(data){
-    //     alert( s );
-    //     console.log(s);
-    // })
-
-    // FCM.onNotification(function(data){
-    //     if(data.wasTapped){
-    //       //Notification was received on device tray and tapped by the user.
-    //       alert( s );
-    //       console.log(s);
-    //     }else{
-    //       //Notification was received in foreground. Maybe the user needs to be notified.
-    //       alert( s );
-    //       console.log(s);
-    //     }
-    // });
-
-
+  // FCM.onNotification(function(data){
+  //     if(data.wasTapped){
+  //       //Notification was received on device tray and tapped by the user.
+  //       alert( s );
+  //       console.log(s);
+  //     }else{
+  //       //Notification was received in foreground. Maybe the user needs to be notified.
+  //       alert( s );
+  //       console.log(s);
+  //     }
+  // });
 }

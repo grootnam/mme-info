@@ -1,38 +1,10 @@
-// qnas = [
-//   {
-//       type : "career",
-//       title : "컴공dsadsadsadsadasads다른점",
-//       index : 5354
-//   },
-//   {
-//       type : "career",
-//       title : "컴dsa공이랑 우리과랑 다른점",
-//       index : 223232
-//   },
-//   {
-//       type : "class",
-//       title : "컴dasd공이랑 우리과랑 다른점",
-//       index : 213122
-//   },
-//   {
-//       type : "etc",
-//       title : "컴공dsadas이랑 우리과랑 다른점",
-//       index : 21322
-//   },
-//   {
-//       type : "class",
-//       title : "컴공이sadsa랑 우리과랑 다른점",
-//       index : 132232
-//   },    {
-//       type : "etc",
-//       title : "컴공dsad이랑 우리과랑 다른점",
-//       index : 12232
-//   }
-// ]
-
 qnas=[]
 
 window.onload = makePage
+
+function toWritePage(){
+  window.location.href="../Q&A/Q&AWrite.html"
+}
 
 function makeCertainPage(categoryName) {
   var container = document.getElementById("content_container");
