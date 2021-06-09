@@ -55,7 +55,7 @@ exports.sendMessageDailyForce = functions.https.onRequest(
       var curDate = new Date();
 
       var curymd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth(), curDate.getUTCDate())
-      var nextYmd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth()+1)
+      var nextYmd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth(), curDate.getUTCDate()+1)
 
       var collectionName = "schedules";
       var scheduleRef = db.collection(collectionName);
@@ -77,8 +77,9 @@ exports.sendMessageDailyForce = functions.https.onRequest(
           var msgs = [];
           snap.docs.forEach((qsnap) => {
             var element = qsnap.data()
-            var from = new Date(element["start"]["_seconds"]*1000)
-            var to = new Date(element["end"]["_seconds"]*1000)
+            const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+            var from = new Date(element["start"]["_seconds"]*1000 + KR_TIME_DIFF)
+            var to = new Date(element["end"]["_seconds"]*1000 + KR_TIME_DIFF)
             msgs.push(
               `오늘의 스케줄: ${
                 element["name"]
@@ -132,7 +133,7 @@ exports.sendMessageDaily = functions.pubsub
     var curDate = new Date();
 
     var curymd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth(), curDate.getUTCDate())
-    var nextYmd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth()+1)
+    var nextYmd=new Date(curDate.getUTCFullYear(), curDate.getUTCMonth(), curDate.getUTCDate()+1)
 
     var collectionName = "schedules";
     var scheduleRef = db.collection(collectionName);
@@ -150,8 +151,9 @@ exports.sendMessageDaily = functions.pubsub
         var msgs = [];
         snap.docs.forEach((qsnap) => {
           var element = qsnap.data()
-          var from = new Date(element["start"]["_seconds"]*1000)
-          var to = new Date(element["end"]["_seconds"]*1000)
+          const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+          var from = new Date(element["start"]["_seconds"]*1000 + KR_TIME_DIFF)
+          var to = new Date(element["end"]["_seconds"]*1000 + KR_TIME_DIFF)
           msgs.push(
             `오늘의 스케줄: ${
               element["name"]
