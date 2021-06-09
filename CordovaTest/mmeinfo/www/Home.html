@@ -15,6 +15,14 @@
     <!-- 반응형 -->
     <style>
         @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+        @font-face {
+            font-family: 'GyeonggiTitleM';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         @media (max-width: 1000px) {
             body{
                 font-size: 0.5em;
@@ -40,7 +48,9 @@
         div{
             margin: 0 0 0 0;
         }
-        
+        .img_viewport img{
+            width: 100%;
+        }
         body > div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default{
             display: none;
         }
@@ -187,6 +197,7 @@
 
     <!-- home 콘텐츠 내용 -->
         <div data-role="main" class="main-up" style="width:100%; text-align: center; color: #7F7F7F;">
+            <!-- 이미지 슬라이더 (slick)-->
             <div class="img_viewport">
                 <div><img src="Resources/Home/1.jpg"></div>
                 <div><img src="Resources/Home/2.jpg"></div>
@@ -205,9 +216,11 @@
                     arrows: false
                 });
             </script>
-            <div class="hometitle" style="padding-left:5%">
-                <h1 style="font-size: 5em; text-align: left; ;">
-                    <nobr style="color: black;">ALi<span style="color:#F59B5D">MME</span></nobr>
+
+            <!-- Home TITLE-->
+            <div class="hometitle" style="padding-left:5%;padding-right: 5%; background-color: #F59B5D; border-radius:15px">
+                <h1 style="font-size: 5em; text-align: left; font-family: 'GyeonggiTitleM';">
+                    <nobr style="color: #495057;">ALi<span style="color:white">MME</span></nobr>
                 </h1>
         </div>
         </div>      
@@ -223,7 +236,7 @@
         <div style="color: #7F7F7F; padding-right: 5%; padding-left: 5%;">
             <div style="padding-top: 5%;padding-bottom: 5%;">
                     <h2 style="font-size: 2.5em; font-weight: bold; color: black;">
-                        공부만 해요.<br>
+                        <span style="color: #F59B5D">공부</span>만 해요.<br>
                         일정은 우리가 알아서 할께요!<br></h2>
                     <p style="font-size: 1.5em;text-overflow:auto;">
                         학과 취업 연계, 지원 가능한 공모전, 다음주 제출인 과제.<br>
@@ -236,7 +249,7 @@
         <div style="color: #7F7F7F; background-color: #F2F2F2; text-align: right;">
             <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
                     <h2 style="font-size: 2.5em; font-weight: bold; color: black;">
-                        궁금한 건 참지마세요!
+                        <span style="color: #F59B5D">궁금</span>한 건 참지마세요!
                     </h2>
                     <p style="font-size:1.5em;">
                         다음 MT는 언제인지 궁금하다면,<br>
@@ -257,8 +270,8 @@
                     </div>
                 <div class="intro-left" style="width: 50%;display: inline-block;">
                         <div style="padding-bottom:5%; padding-top:5%;">
-                            <h2>담당<span style="color:black; font-size:1.2em;">&nbsp;류형주</span><br></h2>
-                            <h2><u></u>96fbgudwn@naver.com</h2>
+                            <h2>담당<span style="color:black; font-size:1.2em;">&nbsp;이근류쌍</span><br></h2>
+                            <h2>96fbgudwn@naver.com</h2>
                             <p style="font-size:1.5em;">
                                 개선사항 부담없이 메일주세요!</p>
                             <br><br><br>
