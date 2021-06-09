@@ -53,9 +53,11 @@
         div {
             margin: 0 0 0 0;
         }
-        .img_viewport img{
+
+        .img_viewport img {
             width: 100%;
         }
+
         body>div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default {
             display: none;
         }
@@ -115,7 +117,7 @@
                 </button>
             </div>
 
-            <ul data-role="none" id="menu-list"
+            <ul id="menu-list"
                 style="list-style:none; font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
                 <li id="page_Notice">
                     <a href="../Notices/Notices.html" rel="external">NOTICE.</a>
@@ -212,97 +214,100 @@
                 }
             }
         </style>
-
         <!-- home 콘텐츠 내용 -->
-        <div data-role="main" class="main-up" style="width:100%; text-align: center; color: #7F7F7F;">
-            <!-- 이미지 슬라이더 (slick)-->
-            <div class="img_viewport">
-                <div><img src="../Resources/Home/1.jpg"></div>
-                <div><img src="../Resources/Home/2.jpg"></div>
-                <div><img src="../Resources/Home/3.jpg"></div>
-                <div><img src="../Resources/Home/4.jpg"></div>
-                <div><img src="../Resources/Home/5.jpg"></div>
-                <div><img src="../Resources/Home/6.jpg"></div>
-            </div>
-            <script type="text/javascript">
-                $('.img_viewport').slick({
-                    infinite: true,
-                    fade: true,
-                    cssEase: 'linear',
-                    autoplay: true,  // 자동슬라이드 on/off
-                    autoplaySpeed: 2000,  //슬라이드 2초마다
-                    arrows: false
-                });
-            </script>
+        <div data-role="content" style="padding: 0 0 0 0;">
+            <div class="main-up" style="width:100%; text-align: center; color: #7F7F7F;">
+                <!-- 이미지 슬라이더 (slick)-->
+                <div class="img_viewport">
+                    <div><img src="../Resources/Home/1.jpg"></div>
+                    <div><img src="../Resources/Home/2.jpg"></div>
+                    <div><img src="../Resources/Home/3.jpg"></div>
+                    <div><img src="../Resources/Home/4.jpg"></div>
+                    <div><img src="../Resources/Home/5.jpg"></div>
+                    <div><img src="../Resources/Home/6.jpg"></div>
+                </div>
+                <script type="text/javascript">
+                    $('.img_viewport').slick({
+                        infinite: true,
+                        fade: true,
+                        cssEase: 'linear',
+                        autoplay: true,  // 자동슬라이드 on/off
+                        autoplaySpeed: 2000,  //슬라이드 2초마다
+                        arrows: false
+                    });
+                </script>
 
-            <!-- Home TITLE-->
-            <div class="hometitle" style="padding-left:5%;padding-right: 5%; background-color: #F59B5D; border-radius:15px">
-                <h1 style="font-size: 5em; text-align: left; font-family: 'GyeonggiTitleM';">
-                    <nobr style="color: #495057;">ALi<span style="color:white">MME</span></nobr>
-                </h1>
-            </div>
-        </div>
-
-        <div style="padding-right: 5%; padding-left: 5%;">
-            <hr>
-        </div>
-
-        <div class="main-down" style="font-size: 1em;">
-
-            <div style="color: #7F7F7F; padding-right: 5%; padding-left: 5%;">
-                <div style="padding-top: 5%;padding-bottom: 5%;">
-                    <h2 style="font-size: 2.5em; font-weight: bold; color: black;">
-                        <span style="color: #F59B5D">공부</span>만 해요.<br>
-                        일정은 우리가 알아서 할께요!<br></h2>
-                    <p style="font-size: 1.5em;text-overflow:auto;">
-                        학과 취업 연계, 지원 가능한 공모전, 다음주 제출인 과제.<br>
-                        단톡방에서 슬쩍 보고 까먹은게 한 두번이 아닌가요?<br>
-                        다 게시판, 달력에 적어놓고 계속 귀뜸해줄께요!<br>
-                    </p>
+                <!-- Home TITLE-->
+                <div class="hometitle"
+                    style="padding-left:5%;padding-right: 5%; background-color: #F59B5D; border-radius:15px">
+                    <h1 style="font-size: 5em; text-align: left; font-family: 'GyeonggiTitleM';">
+                        <nobr style="color: #495057;">ALi<span style="color:white">MME</span></nobr>
+                    </h1>
                 </div>
             </div>
 
-            <div style="color: #7F7F7F; background-color: #F2F2F2; text-align: right;">
-                <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
-                    <h2 style="font-size: 2.5em; font-weight: bold; color: black;">
-                        <span style="color: #F59B5D">궁금</span>한 건 참지마세요!
-                    </h2>
-                    <p style="font-size:1.5em;">
-                        다음 MT는 언제인지 궁금하다면,<br>
-                        학과 와이파이 이용방법이 궁금하다면,<br>
-                        졸업 필수 요건이 궁금하다면,<br>
-                        근남이가 여자친구가 있는지 궁금하다면,<br>
-                        Q&A 게시판을 이용해보세요. 친절히 알려드려요!<br>
-                    </p>
-                </div>
+            <div style="padding-right: 5%; padding-left: 5%;">
+                <hr>
             </div>
 
-            <div style="color: #7F7F7F;">
-                <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
-                    <div class="intro-mme">
-                        <p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;">
-                            ALi<span style="color:#F59B5D;">MME</span>는<br>
-                            학생회가 직접 운영합니다.</p>
+            <!-- 앱 소개 -->
+            <div class="main-down" style="font-size: 1em;">
+
+                <div style="color: #7F7F7F; padding-right: 5%; padding-left: 5%;">
+                    <div style="padding-top: 5%;padding-bottom: 5%;">
+                        <h2 style="font-size: 2.5em; font-weight: bold; color: black;">
+                            <span style="color: #F59B5D">공부</span>만 해요.<br>
+                            일정은 우리가 알아서 할께요!<br>
+                        </h2>
+                        <p style="font-size: 1.5em;text-overflow:auto;">
+                            학과 취업 연계, 지원 가능한 공모전, 다음주 제출인 과제.<br>
+                            단톡방에서 슬쩍 보고 까먹은게 한 두번이 아닌가요?<br>
+                            다 게시판, 달력에 적어놓고 계속 귀뜸해줄께요!<br>
+                        </p>
                     </div>
-                    <div class="intro-left" style="width: 50%;display: inline-block;">
-                        <div style="padding-bottom:5%; padding-top:5%;">
-                            <h2>담당<span style="color:black; font-size:1.2em;">&nbsp;이근류쌍</span><br></h2>
-                            <h2>96fbgudwn@naver.com</h2>
-                            <p style="font-size:1.5em;">
-                                개선사항 부담없이 메일주세요!</p>
-                            <br><br><br>
+                </div>
+
+                <div style="color: #7F7F7F; background-color: #F2F2F2; text-align: right;">
+                    <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
+                        <h2 style="font-size: 2.5em; font-weight: bold; color: black;">
+                            <span style="color: #F59B5D">궁금</span>한 건 참지마세요!
+                        </h2>
+                        <p style="font-size:1.5em;">
+                            다음 MT는 언제인지 궁금하다면,<br>
+                            학과 와이파이 이용방법이 궁금하다면,<br>
+                            졸업 필수 요건이 궁금하다면,<br>
+                            근남이가 여자친구가 있는지 궁금하다면,<br>
+                            Q&A 게시판을 이용해보세요. 친절히 알려드려요!<br>
+                        </p>
+                    </div>
+                </div>
+
+                <div style="color: #7F7F7F;">
+                    <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
+                        <div class="intro-mme">
+                            <p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;">
+                                ALi<span style="color:#F59B5D;">MME</span>는<br>
+                                학생회가 직접 운영합니다.</p>
                         </div>
-                    </div>
-                    <div class="intro-right" style="width: 45%; text-align: right;display: inline-block;">
-                        <img src="../Resources/Home/profile.png" style="height: 20em;">
-                    </div>
+                        <div class="intro-left" style="width: 50%;display: inline-block;">
+                            <div style="padding-bottom:5%; padding-top:5%;">
+                                <h2>담당<span style="color:black; font-size:1.2em;">&nbsp;이근류쌍</span><br></h2>
+                                <h2>96fbgudwn@naver.com</h2>
+                                <p style="font-size:1.5em;">
+                                    개선사항 부담없이 메일주세요!</p>
+                                <br><br><br>
+                            </div>
+                        </div>
+                        <div class="intro-right" style="width: 45%; text-align: right;display: inline-block;">
+                            <img src="../Resources/Home/profile.png" style="height: 20em;">
+                        </div>
 
+                    </div>
                 </div>
+
             </div>
 
-
-
-
+            <!-- 주소 및 연락처-->
             <div data-role="footer"
                 style="bottom:0px;width: 100%; height: 10%;text-align: right; background-color: #F2F2F2 ;  color:#7F7F7F ;">
                 <h5>서울특별시 중구 필동로 1길 30, 신공학관 4층<br>
@@ -310,7 +315,6 @@
                 <h5><i>96fbgudwn@naver.com<br>
                         02-2260-8760</i></h5>
             </div>
-        </div>
 </body>
 
 </html>
