@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="../Resources/Home/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Resources/Home/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="../Resources/Home/slick/slick-theme.css" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,265 +15,314 @@
     <!-- 반응형 -->
     <style>
         @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
         @media (max-width: 1000px) {
-            body{
+            body {
                 font-size: 0.5em;
             }
+
             .main-up {
-                padding-top: 35%;
+                padding-top: 8em;
             }
         }
+
         @media (min-width: 1001px) {
             .main-up {
                 padding-top: 13%
             }
-            #menu{
+
+            #menu {
                 width: 40%
             }
         }
-        body{
+
+        body {
             width: 100%;
             height: 100%;
             margin: 0 0 0 0;
             padding: 0 0 0 0;
         }
-        div{
+
+        div {
             margin: 0 0 0 0;
         }
-        .main-up{
-            padding-top: 40%;
-        }
-        
-        body > div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default{
+
+        body>div.ui-loader.ui-corner-all.ui-body-a.ui-loader-default {
             display: none;
         }
-
     </style>
 </head>
+
 <body style="font-family: 'NanumSquare', sans-serif;">
     <div data-role="page" id="Home" style="width: 100%; height: 100%;">
-    <!-- 메뉴 오픈 클릭시 전체회색화면-->
-    <div id="grayScreen" style="display: none; position: absolute;background-color: #E8E8E8; width: 100%; height: 100%; opacity: 0.5; z-index: 10;"></div>
-    <!-- 헤더 -->
-    <div data-role="header" id="header" style="height: 8em;width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white; z-index: 5;">
-        <div id="header_backbutton" style="width: 27%; height: 100%; overflow: hidden; position: relative; display: inline-block;">
-            <!-- <a style="vertical-align: middle;" onclick="$.mobile.back();"><img height="30em" src="../Resources/header_Menu_Image/back_img.png"></a> -->
-        </div><div id="header_menu" style="width: 70%; height: 100%; right: 0;overflow: hidden; position: relative; display: inline-block;">
-            <button id="showRightMenuOpen" class="ui-btn"alt="menu" onclick="activeNav()" style="padding: 0 0 0 0;position: fixed ;border-style: none; background-color: white;">
-                <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
-            </button>
-            <script type="text/javascript">
-                function activeNav(){ 
-                    var m_menu = document.getElementById("menu");
-                    var m_grayScreen = document.getElementById("grayScreen");
-                    if(m_menu.style.display =='none'){
-                        $("#menu").show(200);
-                        m_grayScreen.style.display= 'inline-block';
-                    }else{
-                        $("#menu").hide(200);
-                        m_grayScreen.style.display='none';
+        <!-- 메뉴 오픈 클릭시 전체회색화면-->
+        <div id="grayScreen"
+            style="display: none; position: absolute;background-color: #E8E8E8; width: 100%; height: 100%; opacity: 0.5; z-index: 10;">
+        </div>
+        <!-- 헤더 -->
+        <div data-role="header" id="header"
+            style="height: 8em;width: 100%; overflow: hidden; position: fixed; top: 0px; display: block; background-color: white; z-index: 5;">
+            <div id="header_backbutton"
+                style="width: 27%; height: 100%; overflow: hidden; position: relative; display: inline-block;">
+                <!-- <a style="vertical-align: middle;" onclick="$.mobile.back();"><img height="30em" src="../Resources/header_Menu_Image/back_img.png"></a> -->
+            </div>
+            <div id="header_menu"
+                style="width: 70%; height: 100%; right: 0;overflow: hidden; position: relative; display: inline-block;">
+                <button id="showRightMenuOpen" class="ui-btn" alt="menu" onclick="activeNav()"
+                    style="padding: 0 0 0 0;position: fixed ;border-style: none; background-color: white;">
+                    <img src="../Resources/header_Menu_Image/open_menulist.png" id="Menu_Open_img" height="50em">
+                </button>
+                <script type="text/javascript">
+                    function activeNav() {
+                        var m_menu = document.getElementById("menu");
+                        var m_grayScreen = document.getElementById("grayScreen");
+                        if (m_menu.style.display == 'none') {
+                            $("#menu").show(200);
+                            m_grayScreen.style.display = 'inline-block';
+                        } else {
+                            $("#menu").hide(200);
+                            m_grayScreen.style.display = 'none';
+                        }
                     }
-                }
 
-                $("#grayScreen").click(function(){
-                    var m_menu = document.getElementById("menu");
-                    var m_grayScreen = document.getElementById("grayScreen");
-                    m_menu.style.display = 'none';
-                    m_grayScreen.style.display='none';
-                });
-                
-            </script>
-        </div>
-    </div>
-    
-    <!-- nav메뉴 -->
-    <div id="menu" style="height: 100%; background: white ; display: none; position: fixed; float: right; right: 0px; z-index: 100; list-style: none;">
-        <div style="display: inline-block; width:100%; height: 8em; margin:  0 0 0 0;text-align: right;">
-            <button id="showRightMenuClose" class="ui-btn" alt="menu"  onclick="activeNav()" style="display: inline-block; width:3.5em;height: 3.5em;padding: 0 0 0 0; border-style: none; background-color: white;">
-                <img src="../Resources/header_Menu_Image/close_menulist.png" id="Menu_Close_img" height="50em" style="">
-            </button>
-        </div>
-        
-        <ul data-role="none" id="menu-list" style="list-style:none; font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
-            <li id="page_Notice" >
-                <a href="../Notices/Notices.html" rel="external">NOTICE.</a>
-            </li>
-            <li id="page_Calendar">
-                <a href="../Calendar/calendar.html" rel="external">CALENDAR.</a>
-            </li>
-            <li id="page_QA">
-                <a href="../Q&As/Q&As.html" rel="external">Q&A.</a>
-            </li>
-        </ul>
-    </div>
-    <style>
-        #header_backbutton:after{display:inline-block; height:100%; content:""; vertical-align:middle;}
-        #menu-list a{
-            color: black;
-            text-decoration: none;
-        }
-        #menu-list a:link{
-            color: black;
-            text-decoration: none;
-        }
-        #menu-list a:visited { color: black; text-decoration: none;}
-        #menu-list li{
-            margin-top: 1.3em;
-            margin-bottom: 1.3em;
-        }
-        #page_Notice:hover{
-        background-color: #ACDEE7;
-        color: white;
-        }
-        #page_Calendar:hover{
-        background-color: #FFE699;
-        color: white;
-        }
-        #page_QA:hover{
-        background-color: #C3D9C2;
-        color: white;
-        }
-        @media (max-width: 1000px) {
-            #menu{
-                width: 65%
-            }
-            #header{
-                height: 10%;
-            }
-            #showRightMenuOpen{
-                top: 0.5% ;right: 0.5%
-            }
-            #showRightMenuClose{
-                top: 0.5% ;right: 0.5%
-            }
-        }
-        @media (min-width: 1001px) {
-            #menu{
-                width: 40%
-            }
-            #header{
-                height: 15%;
-            }
-            #showRightMenuOpen{
-                top: 3% ;right: 3%
-            }
-            #showRightMenuClose{
-                top: 3% ;right: 3%
-            }
-        }
-    </style>
+                    $("#grayScreen").click(function () {
+                        var m_menu = document.getElementById("menu");
+                        var m_grayScreen = document.getElementById("grayScreen");
+                        m_menu.style.display = 'none';
+                        m_grayScreen.style.display = 'none';
+                    });
 
-    <!-- home 콘텐츠 내용 -->
-    <div data-role="main" class="main-up" style="width:100%; height:100%; text-align: center; color: #7F7F7F;">
-        <div class="hometitle">
-            <h1 style="font-size: 5em;"><nobr style="color: black;">Ali</nobr><nobr style="color: #F59B5D;">MME</nobr></h1>
+                </script>
+            </div>
         </div>
-        <div class="img-viewport" style="width: 100%; height: 20%; padding-top: 5%; overflow: hidden; position: relative; z-index: 1;">
-            <ul class="img_slider" style="width: 2500%; overflow: hidden; position: relative; padding-left: 0;">
-                <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/1.jpg" height="300em">
-                 </li>
-                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/2.jpg" height="300em">
-                 </li>
-                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/3.jpg" height="300em">
-                 </li>
-                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/4.jpg" height="300em">
-                 </li>
-                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/5.jpg" height="300em">
-                 </li>
-                 <li class="slide" style="float: left; list-style: none; position: relative; display: block;">
-                    <img src="../Resources/Home/6.jpg" height="300em">
-                 </li>
+
+        <!-- nav메뉴 -->
+        <div id="menu"
+            style="height: 100%; background: white ; display: none; position: fixed; float: right; right: 0px; z-index: 100; list-style: none;">
+            <div style="display: inline-block; width:100%; height: 8em; margin:  0 0 0 0;text-align: right;">
+                <button id="showRightMenuClose" class="ui-btn" alt="menu" onclick="activeNav()"
+                    style="display: inline-block; width:3.5em;height: 3.5em;padding: 0 0 0 0; border-style: none; background-color: white;">
+                    <img src="../Resources/header_Menu_Image/close_menulist.png" id="Menu_Close_img" height="50em">
+                </button>
+            </div>
+
+            <ul data-role="none" id="menu-list"
+                style="list-style:none; font-size: 3em ;display: block; position: fixed; top: 13%; text-decoration: none;">
+                <li id="page_Notice">
+                    <a href="../Notices/Notices.html" rel="external">NOTICE.</a>
+                </li>
+                <li id="page_Calendar">
+                    <a href="../Calendar/calendar.html" rel="external">CALENDAR.</a>
+                </li>
+                <li id="page_QA">
+                    <a href="../Q&As/Q&As.html" rel="external">Q&A.</a>
+                </li>
             </ul>
-
-            <style>
-                .img_slider{
-                animation: slide_img 20s infinite linear alternate;
-            }
-    
-            @keyframes slide_img{
-                from{
-                    transform: translateX(0px);
-                }
-                to{
-                    transform: translateX(-250em);
-                }
-            }
-            
-            </style>
         </div>
-        <div class="hometitle" style="padding-top: 3%; font-size: 1.5em; font-weight: normal;">
-            <p><h1 >MultiMedia Engineering Of Dongguk Univ.</h1></p>
+        <!-- Header menu css-->
+        <style>
+            #header_backbutton:after {
+                display: inline-block;
+                height: 100%;
+                content: "";
+                vertical-align: middle;
+            }
+
+            #menu-list a {
+                color: black;
+                text-decoration: none;
+            }
+
+            #menu-list a:link {
+                color: black;
+                text-decoration: none;
+            }
+
+            #menu-list a:visited {
+                color: black;
+                text-decoration: none;
+            }
+
+            #menu-list li {
+                margin-top: 1.3em;
+                margin-bottom: 1.3em;
+            }
+
+            #page_Notice:hover {
+                background-color: #ACDEE7;
+                color: white;
+            }
+
+            #page_Calendar:hover {
+                background-color: #FFE699;
+                color: white;
+            }
+
+            #page_QA:hover {
+                background-color: #C3D9C2;
+                color: white;
+            }
+
+            @media (max-width: 1000px) {
+                #menu {
+                    width: 65%
+                }
+
+                #header {
+                    height: 10%;
+                }
+
+                #showRightMenuOpen {
+                    top: 0.5%;
+                    right: 0.5%
+                }
+
+                #showRightMenuClose {
+                    top: 0.5%;
+                    right: 0.5%
+                }
+            }
+
+            @media (min-width: 1001px) {
+                #menu {
+                    width: 40%
+                }
+
+                #header {
+                    height: 15%;
+                }
+
+                #showRightMenuOpen {
+                    top: 3%;
+                    right: 3%
+                }
+
+                #showRightMenuClose {
+                    top: 3%;
+                    right: 3%
+                }
+            }
+        </style>
+
+        <!-- home 콘텐츠 내용 -->
+        <div data-role="main" class="main-up" style="width:100%; text-align: center; color: #7F7F7F;">
+            <div class="img_viewport">
+                <div><img src="../Resources/Home/1.jpg"></div>
+                <div><img src="../Resources/Home/2.jpg"></div>
+                <div><img src="../Resources/Home/3.jpg"></div>
+                <div><img src="../Resources/Home/4.jpg"></div>
+                <div><img src="../Resources/Home/5.jpg"></div>
+                <div><img src="../Resources/Home/6.jpg"></div>
+            </div>
+            <script type="text/javascript">
+                $('.img_viewport').slick({
+                    infinite: true,
+                    fade: true,
+                    cssEase: 'linear',
+                    autoplay: true,  // 자동슬라이드 on/off
+                    autoplaySpeed: 2000,  //슬라이드 2초마다
+                    arrows: false
+                });
+            </script>
+            <div class="hometitle" style="padding-left:5%">
+                <h1 style="font-size: 5em; text-align: left; ;">
+                    <nobr style="color: black;">Ali</nobr>
+                    <nobr style="color: #F59B5D;">MME</nobr>
+                </h1>
+            </div>
         </div>
-        <div style="padding-top: 1%;">
-            <p>MMESEUM은 동국대학교 멀티미디어공학과 학생들을 위한 웹입니다. </p> 
-            <p> 멀티미디어공학과의 공지사항과 학사일정을 확인 할 수 있습니다.</p>
-            <p> 그리고 Q&A를 통해 학생들이 서로 소통할 수 있습니다.</p>
-        </div>      
-    </div>
-    
 
-
-    <div class="main-down" style="font-size: 1em;">
-
-        <div style="padding-top: 6%; padding-right: 5%; padding-left: 5%;">
+        <div style="padding-right: 5%; padding-left: 5%;">
             <hr>
         </div>
 
-        <div style="color: #7F7F7F; padding-right: 5%; padding-left: 5%;">
-            <div style="padding-top: 5%;padding-bottom: 5%;">
-            <p style="font-size: 2.5em; font-weight: bold; color: black;">민족<nobr style="color: #F59B5D;">동국</nobr>, 절대<nobr style="color: #F59B5D;">멀티</nobr>!</p>
-            <p><h2>애플리케이션을 관리하는 멀티미디어공학과 학생회입니다.</h2></p>
-            <p><h2>이 밤 그날의 반딧불을 당신의 창 가까이 보낼게요.</h2></p>
-            <p><h2>음 사랑한다는 말이에요. 나 우리의 첫 입맞춤을 떠올려</h2></p>
-            <p><h2>그럼 언제든 눈을 감고 음 가장 먼 곳으로 가요</h2></p>
+        <div class="main-down" style="font-size: 1em;">
+
+            <div style="color: #7F7F7F; padding-right: 5%; padding-left: 5%;">
+                <div style="padding-top: 5%;padding-bottom: 5%;">
+                    <p style="font-size: 2.5em; font-weight: bold; color: black;">민족<nobr style="color: #F59B5D;">동국
+                        </nobr>, 절대<nobr style="color: #F59B5D;">멀티</nobr>!</p>
+                    <p>
+                    <h2>애플리케이션을 관리하는 멀티미디어공학과 학생회입니다.</h2>
+                    </p>
+                    <p>
+                    <h2>이 밤 그날의 반딧불을 당신의 창 가까이 보낼게요.</h2>
+                    </p>
+                    <p>
+                    <h2>음 사랑한다는 말이에요. 나 우리의 첫 입맞춤을 떠올려</h2>
+                    </p>
+                    <p>
+                    <h2>그럼 언제든 눈을 감고 음 가장 먼 곳으로 가요</h2>
+                    </p>
+                </div>
+            </div>
+
+            <div style="color: #7F7F7F; background-color: #F2F2F2; text-align: right;">
+                <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
+                    <p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;">우리 <nobr
+                            style="color: #F59B5D;">멀티미디어공학과</nobr> 학생들이</p>
+                    <p style="font-size: 2.5em; font-weight: bold; margin-top: 0.2em; color: black;">만들어 나가는 애플리케이션 입니다.
+                    </p>
+                    <p>
+                    <h2>애플리케이션을 관리하는 멀티미디어공학과 학생회입니다.</h2>
+                    </p>
+                    <p>
+                    <h2>이 밤 그날의 반딧불을 당신의 창 가까이 보낼게요.</h2>
+                    </p>
+                    <p>
+                    <h2>음 사랑한다는 말이에요. 나 우리의 첫 입맞춤을 떠올려</h2>
+                    </p>
+                    <p>
+                    <h2>그럼 언제든 눈을 감고 음 가장 먼 곳으로 가요</h2>
+                    </p>
+                </div>
+            </div>
+
+            <div style="color: #7F7F7F;">
+                <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
+                    <div class="intro-mme">
+                        <p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;"> 저희는 <nobr
+                                style="color: #F59B5D;">항상</nobr> 열려 있습니다.</p>
+                    </div>
+                    <div class="intro-left" style="width: 50%;display: inline-block;">
+                        <p>
+                        <h2>회장</h2>
+                        </p>
+                        <p>
+                        <h2>이영주</h2>
+                        </p>
+                        <p>
+                        <h2>dudwn97@naver.com</h2>
+                        </p>
+                        <br>
+                        <p>
+                        <h2>부회장</h2>
+                        </p>
+                        <p>
+                        <h2>류근석</h2>
+                        </p>
+                        <p>
+                        <h2>gudwn_hack@gmail.com</h2>
+                        </p>
+                    </div>
+                    <div class="intro-right" style="width: 45%; text-align: right;display: inline-block;">
+                        <img src="../Resources/Home/ryu.jpg" style="height: 20em;">
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <div style="color: #7F7F7F; background-color: #F2F2F2; text-align: right;">
-            <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
-            <p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;">우리 <nobr style="color: #F59B5D;">멀티미디어공학과</nobr> 학생들이</p>
-            <p style="font-size: 2.5em; font-weight: bold; margin-top: 0.2em; color: black;">만들어 나가는 애플리케이션 입니다.</p>
-            <p><h2>애플리케이션을 관리하는 멀티미디어공학과 학생회입니다.</h2></p>
-            <p><h2>이 밤 그날의 반딧불을 당신의 창 가까이 보낼게요.</h2></p>
-            <p><h2>음 사랑한다는 말이에요. 나 우리의 첫 입맞춤을 떠올려</h2></p>
-            <p><h2>그럼 언제든 눈을 감고 음 가장 먼 곳으로 가요</h2></p>
-            </div>
-        </div>
-        
-        <div style="color: #7F7F7F;">
-            <div style=" padding-right: 5%; padding-left: 5%; padding-top: 5%;padding-bottom: 5%;">
-                <div class="intro-mme"><p style="font-size: 2.5em; font-weight: bold; margin-bottom: 0.2em; color: black;"> 저희는 <nobr style="color: #F59B5D;">항상</nobr> 열려 있습니다.</p></div>
-                <div class="intro-left" style="width: 50%;display: inline-block;">
-                    
-                    <p><h2>회장</h2></p>
-                    <p><h2>이영주</h2></p>
-                    <p><h2>dudwn97@naver.com</h2></p>
-                    <br>
-                    <p><h2>부회장</h2></p>
-                    <p><h2>류근석</h2></p>
-                    <p><h2>gudwn_hack@gmail.com</h2></p>
-                </div>
-                <div class="intro-right" style="width: 45%; text-align: right;display: inline-block;">
-                    <img src="../Resources/Home/ryu.jpg" style="height: 20em;">
-                </div>
 
-            </div>
+
+
+        <div data-role="footer"
+            style="bottom:0px;width: 100%; height: 10%;text-align: right; background-color: #F2F2F2 ;  color:#7F7F7F ;">
+            <h5>서울특별시 중구 필동로 1길 30, 신공학관 4층</h5>
+            <h5>동국대학교 멀티미디어공학과</h5>
+            <h5>E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760</h5>
         </div>
     </div>
-
-
-
-
-    <div data-role="footer" style="bottom:0px;width: 100%; height: 10%;text-align: right; background-color: #F2F2F2 ;  color:#7F7F7F ;">
-        <h5>서울특별시 중구 필동로 1길 30, 신공학관 4층</h5>
-        <h5>동국대학교 멀티미디어공학과</h5>
-        <h5>E-mail: 아메리카노맛있따@류형주.멋쟁이 Tel: 02-2260-8760</h5>
-    </div>
-</div>
 </body>
+
 </html>
